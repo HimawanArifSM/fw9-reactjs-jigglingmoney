@@ -1,0 +1,196 @@
+.lp-header{
+    background: url(./scr/images/MaskGroup1.png);
+    background-repeat: no-repeat
+    ;background-position: top right;
+    background-size: 50%; 
+    padding: 5% 10%;
+    }
+
+@media (max-width: 767.98px) { 
+    .lp-header{
+        background: none; 
+        background-repeat: none;
+        background-position: none;
+        background-size: 50px; 
+        padding: 5px 10px;
+        }
+
+    .lp-img-phone{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .pad-body{
+        padding: 5px 8px 5px 8px;
+    }
+ }
+.pad-body{
+    padding: 50px 80px 50px 80px;
+}
+
+
+
+.blue-button{
+    background: #6379F4;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    min-width: 120px;
+    min-height: 50px;
+    padding-left: 13px;
+    padding-top: 5px;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+}
+.white-button{
+    background: #FFFFFF;
+    border: 2px solid #6379F4;
+    box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
+    border-radius: 12px;
+    box-sizing: border-box;
+    color: #6379F4;
+    min-width: 120px;
+    min-height: 50px;
+    padding-left: 16px;
+    padding-top: 5px;
+    padding-right: 16px;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+}.auth-intro{
+    background: url(./scr/images/Mask-Group-login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.auth-form-wrapper{
+    padding-top: 7%;
+    padding-right: 7%;
+    padding-left: 7%;
+    padding-bottom: 7%;
+}
+.fw-input{
+    border: unset;
+    border-bottom: 1px solid gray;
+    border-radius: unset;
+}
+.fw-input:focus{
+    border-color: unset;
+    box-shadow: unset;
+}
+.fw-inp-icon{
+    background: unset;
+    border: unset;
+    border-bottom:1px solid gray;
+    border-radius: unset;
+}
+.pin-input-wrapper{
+    max-height: 60px;
+}
+.pin-input-wrapper input:focus{
+    outline: none;
+}
+.header-zwallet{
+    font-family: 'Nunito Sans'; 
+    font-style: normal; 
+    font-weight: 700;   
+    font-size: 29px;
+    line-height: 40px;
+    color: #6379F4;
+}
+.font-700{
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700px;
+    font-size: 18px;
+    line-height: 25px;
+}
+.font-400{
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+}
+.sidebar{
+    padding: 50px 0 50px 50px;
+    border-radius: 10px;
+    background-color: white;
+    color: rgba(58, 61, 66, 0.8);
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 31px;
+}
+.style-profile-main{
+    padding: 5px 5px;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 31px;text-align: center;
+    color: #3A3D42;
+}
+.zwallet-footer{
+    border-radius:10px;
+    background:#6379F4;
+    padding: 50px 80px;
+    color: white;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 28px;
+}
+.bg-white{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+}
+.bg-white-shadow{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+.input-no-border{
+    border: unset;
+    border-bottom:1px solid gray;
+    background-color: unset;
+    border-radius: unset;
+}
+.pin-inp{
+    width: 35px; 
+    height: 50px; 
+    border: unset; 
+    border-bottom: 1px solid gray;
+    font-size: 30px; 
+    text-align: center;
+}
+.header-bg{
+    padding: 50px 50px 50px 80px;
+    background-color: white;
+}
+.bg-gray{
+    background: #e7ebee;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 10px; 
+    padding: 30px 30px;
+}
+
+@media (max-width: 575.98px) { 
+    .header-bg{
+        padding: 5px 5px 5px 8px;
+        background-color: white;
+    }
+ }
