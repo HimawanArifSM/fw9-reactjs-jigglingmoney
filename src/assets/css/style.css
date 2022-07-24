@@ -32,20 +32,39 @@
 .pad-main{
     padding: 120px 150px;
 }
+.pad-content{
+    padding: 35px 150px !important;
+}
 .margin-btm{
     margin-bottom: 30px;
 }
+.margin-btm-ex{
+    margin-bottom: 300px;
+}
+.margin-mn{
+    margin-left: 13px;
+}
 .bg-main{
-    background-color: #b6a5a5;
+    background-color: #47d3d5;
+}
+.bg-main-ct{
+    background-color: #47d3d5;
+    border-radius: 20px;
 }
 .pad-sec-1{
     padding: 30px 30px;
+}
+.pad-sec-2{
+    padding: 13px 13px;
 }
 .text-ctr{
     text-align: center;
 }
 .main-clr{
     color: #6379F4;
+}
+.sc-clr{
+    color: rgb(50, 94, 78);
 }
 
 .flex-btwn{
@@ -67,13 +86,13 @@
     background: #6379F4;
     border: 2px solid #FFFFFF;
     box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-    border-radius: 12px;
+    border-radius: 10px;
     box-sizing: border-box;
     color: #FFFFFF;
-    min-width: 120px;
-    min-height: 50px;
-    padding-left: 13px;
-    padding-top: 5px;
+    width: 120px;
+    height: 50px;
+    padding: 12px 5px 13px;
+    
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 700;
@@ -81,18 +100,22 @@
     line-height: 25px;
     text-align: center;
 }
+.wid-imp{
+    width: 200px !important;
+}
+.wid-imp2{
+    width: 10px !important;
+}
 .white-button{
     background: #FFFFFF;
     border: 2px solid #6379F4;
     box-shadow: 0px 6px 75px rgba(100, 87, 87, 0.05);
-    border-radius: 12px;
+    border-radius: 10px;
     box-sizing: border-box;
     color: #6379F4;
     min-width: 120px;
     min-height: 50px;
-    padding-left: 16px;
-    padding-top: 5px;
-    padding-right: 16px;
+    padding: 12px 5px 13px;
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 700;
@@ -114,10 +137,15 @@
     border: unset;
     border-bottom: 1px solid gray;
     border-radius: unset;
+    font-size: 16px;
 }
 .fw-input:focus{
     border-color: unset;
     box-shadow: unset;
+}
+.icon-style{
+    width: 20px;
+    height: auto;
 }
 .fw-inp-icon{
     background: unset;
@@ -143,15 +171,27 @@
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 700px;
-    font-size: 18px;
     line-height: 25px;
 }
 .font-400{
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    line-height: 27px; 
+}
+.f400-main{
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px; 
+    color: #47d3d5;
+}
+.f400-bck{
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
     line-height: 27px;
+    color: black;
 }
 .sidebar{
     padding: 50px 0 50px 50px;
@@ -174,10 +214,9 @@
     color: #3A3D42;
 }
 .zwallet-footer{
-    border-radius:10px;
-    background:#6379F4;
-    padding: 50px 80px;
-    color: white;
+    background:#47d3d5;
+    padding: 50px 80px 50px 80px;
+    color: black;
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 600;
@@ -208,8 +247,9 @@
     height: 50px; 
     border: unset; 
     border-bottom: 1px solid gray;
-    font-size: 30px; 
+    font-size: 16px; 
     text-align: center;
+    border-radius: unset;
 }
 .header-bg{
     padding: 50px 50px 50px 80px;
@@ -227,4 +267,24 @@
         padding: 5px 5px 5px 8px;
         background-color: white;
     }
+ }
+ .pin-inpt{
+    border: 1px solid gray;padding: 5px 5px; border-radius: 10px;height: 60px;
+ }
+ .scs-icon{
+    width: 70px;
+    height: 70px;
+ }
+ .no-border{
+    border: unset;
+    width: 65px;
+ }
+ .no-border2{
+    border: unset;
+ }
+ .wd200{
+    width: 500px;
+ }
+ .modal-style{
+    border: 1px solid gray;padding: 5px 5px; border-radius: 10px;
  }

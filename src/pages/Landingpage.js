@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {  Navbar, Container} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 import phone1 from '../assets/images/png-phone.png'
 import partnerBrand from '../assets/images/group-24.png'
@@ -15,13 +16,13 @@ function Landingpage() {
     <section>
       <header className='lp-header'>
         <Navbar>
-          <Container>
+          <Container className='d-flex justify-content-between'>
               <div>
                 <h1>J-Money</h1>
               </div>
-              <div>
-                <button className='blue-button'>login</button>
-                <button className='white-button'>Sign Up</button>
+              <div className='d-flex gap-2'>
+                <Link className='btn blue-button' to={"/login"}>login</Link>
+                <Link className='btn white-button' to={"/register"}>Sign Up</Link>
               </div>
             </Container>
         </Navbar>
@@ -34,7 +35,7 @@ function Landingpage() {
                   <p className="font-400">We bring you a mobile app for banking problems that
                       oftenly wasting much of your times.</p>
                   <div><a href="/register.html">
-                      <button className='blue-button'>Try It Free</button></a>
+                      <Link className='btn blue-button' to={"/register"}>Try It Free</Link></a>
                   </div>
               </div>
               <div className='flex-col'>
@@ -83,7 +84,7 @@ function Landingpage() {
           </div>
           <div className='flex-col'>
               <div className='margin-btm'>
-                  <h1>All The <span>Great</span> Zwallet Features.</h1>
+                  <h1>All The <span className='main-clr'>Great</span> Zwallet Features.</h1>
               </div>
               <div className='bg-white margin-btm'>
                   <h3>1. Small Fee</h3>
