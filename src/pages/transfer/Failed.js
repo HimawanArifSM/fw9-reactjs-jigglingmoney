@@ -1,7 +1,8 @@
 import React from 'react'
 import {Navbar, Container, Row, Col} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-import {FiArrowUp,FiPlus,FiBell, FiMenu, FiUser, FiLogOut} from 'react-icons/fi'
+import {FiArrowUp,FiPlus,FiBell, FiUser, FiLogOut} from 'react-icons/fi'
+import { AiOutlineAppstore } from "react-icons/ai";
 import Modals from './Modals'
 import {FcHighPriority} from 'react-icons/fc'
 
@@ -27,7 +28,7 @@ function Failed() {
                             <div className="text-center f400-bck text-decoration-none">+62 8139 3877 7946</div>
                         </a>
                         <div>
-                            <FiBell/>
+                            <FiBell size={30}/>
                         </div>
                         </div>
                     </Navbar.Collapse>
@@ -39,15 +40,15 @@ function Failed() {
         <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
             <Col className='col-12 col-md-2 d-flex flex-column justify-content-between sidebar bg-white'>
             <div className="d-flex flex-column gap-5 ">
-                    <Link to={"/home"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none' href="/dashboard/home.html">
-                        <FiMenu />
+                    <Link to={"/home"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none'>
+                        <AiOutlineAppstore />
                         <p5 >Dashboard</p5>
                     </Link>
-                    <Link to={"/transfer"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none'  href="/transfer/transfer.html">
+                    <Link to={"/transfer"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none'>
                         <FiArrowUp />
                         <p5>Transfer</p5>
                     </Link>
-                    <Link to={"/topup"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none' href="/topUp/topUp.html">
+                    <Link to={"/topup"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none'>
                         <FiPlus />
                         <p5>Top Up</p5>
                     </Link>
@@ -57,7 +58,7 @@ function Failed() {
                     </Link>
                 </div>
                 <div>
-                    <Link to={"/login"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none' href="/login.html">
+                    <Link to={"/login"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none'>
                         <FiLogOut />
                         <p5>Logout</p5>
                     </Link>
