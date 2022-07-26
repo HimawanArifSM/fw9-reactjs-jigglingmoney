@@ -31,9 +31,9 @@ function Addphone() {
                 </p>
                     <div className='pad-content '>
                     <Form className='margin-btm d-flex justify-content-center flex-row pin-input-wrapper gap-3'> {/** INI PENTING */}
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
+                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap fw-input">
                         <FiPhone className=' icon-style '/>+62
-                        <Form.Control name="password"  type="password" placeholder="Enter your phone number"  className="fw-input "/>  {/** INI PENTING */}
+                        <Form.Control name="password"  type="password" placeholder="Enter your phone number"  className="no-border2"/>  {/** INI PENTING */}
                         <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                     </Form.Group>
                 </Form>  {/** INI PENTING */}

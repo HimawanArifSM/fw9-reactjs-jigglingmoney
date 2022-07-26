@@ -99,9 +99,9 @@ function Transfer() {
                 <div className="row d-flex flex-col gap-5 bg-white f400-bck">
                 <p className="font-700">Search Receiver</p>
                 <Form>
-                    <Form.Group className="mb-3 d-flex align-items-center">
+                    <Form.Group className="mb-3 d-flex align-items-center fw-input">
                         <FiSearch />
-                        <Form.Control name="search"  type="search" placeholder="Search receiver here"  className="fw-input"/>  {/** INI PENTING */}
+                        <Form.Control name="search"  type="search" placeholder="Search receiver here"  className="no-border2"/>  {/** INI PENTING */}
                         <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                     </Form.Group>
                 </Form>

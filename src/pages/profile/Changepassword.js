@@ -31,19 +31,19 @@ function Changepassword() {
                 </p>
                     <div className='pad-content'>
                     <Form >
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiLock className='fw-inp-icon icon-style '/>
-                        <Form.Control name="password"  type="password" placeholder="Current password"  className="fw-input "/>  {/** INI PENTING */}
+                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap fw-input">
+                        <FiLock className='icon-style '/>
+                        <Form.Control name="password"  type="password" placeholder="Current password"  className="no-border2"/>  {/** INI PENTING */}
                         <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiLock className='fw-inp-icon icon-style '/>
-                        <Form.Control name="password"  type="password" placeholder="New password"  className="fw-input "/>  {/** INI PENTING */}
+                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap fw-input">
+                        <FiLock className='icon-style '/>
+                        <Form.Control name="password"  type="password" placeholder="New password"  className="no-border2"/>  {/** INI PENTING */}
                         <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                     </Form.Group>
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiLock className='fw-inp-icon icon-style '/>
-                        <Form.Control name="password"  type="password" placeholder="Repeat new password"  className="fw-input "/>  {/** INI PENTING */}
+                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap fw-input">
+                        <FiLock className='icon-style '/>
+                        <Form.Control name="password"  type="password" placeholder="Repeat new password"  className="no-border2"/>  {/** INI PENTING */}
                         <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                     </Form.Group>
                 </Form>

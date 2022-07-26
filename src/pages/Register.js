@@ -5,7 +5,58 @@ import { Form } from 'react-bootstrap';
 
 
 import pictLogin from '../assets/images/Group-login-phone.png';
+import * as Yup from 'yup'
+import { Formik } from 'formik'
 
+const loginschema = Yup.object().shape({
+  username: Yup.string().min(4).required('Required'),
+  email: Yup.string().email('Invalid email address format').required('Required'),
+  password: Yup.string().min(4).required('Required')
+})
+
+function AuthForm({errors, handleSubmit, handleChange}){
+  return(
+    <div class="d-flex gap-5 flex-column">
+        <h3>Start Accessing Banking Needs
+            With All Devices and All Platforms
+            With 30.000+ Users
+        </h3>
+        <p>Transfering money is eassier than ever, you can access Zwallet wherever  you are. Desktop, laptop, mobile phone? we cover all of that for you!                   
+        </p>
+        <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-4'> {/** INI PENTING */}
+            <Form.Group className="mb-3  input-group">
+              <div className='input-group-text input-no-border'>
+              <FiUser />
+              </div>
+              <Form.Control name="username" onChange={handleChange} isInvalid={!!errors.username} type="username" placeholder="Enter your username"  className="fw-input"/>  {/** INI PENTING */}
+              <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3  input-group">
+              <div className='input-group-text input-no-border'>
+              <FiMail />
+              </div>
+              <Form.Control name="email" onChange={handleChange} isInvalid={!!errors.email} type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
+              <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3 input-group">
+              <div className='input-group-text input-no-border'> 
+              <FiLock />
+              </div>
+              <Form.Control name="password" onChange={handleChange} isInvalid={!!errors.password} type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+          </Form.Group>
+        </Form>  {/** INI PENTING */}
+        <div class="d-grid">
+            <Link to={"/createpin"} type='submit' class="btn btn-primary">Sign Up</Link>
+        </div>
+        <div class="text-center">
+            <p>Already have an account? Let's <Link to={"/login"}>Login</Link></p>
+        </div>
+    </div>
+  )
+}
 
 function Register() {
   return (
@@ -29,39 +80,9 @@ function Register() {
           </div>
         </div>
         <div class="col-5 auth-form-wrapper ">
-            <div class="d-flex gap-5 flex-column">
-                <h3>Start Accessing Banking Needs
-                    With All Devices and All Platforms
-                    With 30.000+ Users
-                </h3>
-                <p>Transfering money is eassier than ever, you can access Zwallet wherever  you are. Desktop, laptop, mobile phone? we cover all of that for you!                   
-                </p>
-                <Form > {/** INI PENTING */}
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiUser className='fw-inp-icon icon-style '/>
-                        <Form.Control name="user"  type="user" placeholder="Enter email"  className="fw-input "/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3 d-flex align-items-center">
-                        <FiMail />
-                        <Form.Control name="email"  type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3 d-flex align-items-center">
-                        <FiLock />
-                        <Form.Control name="password"  type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group>
-                </Form>  {/** INI PENTING */}
-                <div class="d-grid">
-                    <Link to={"/createpin"} class="btn btn-primary">Sign Up</Link>
-                </div>
-                <div class="text-center">
-                    <p>Already have an account? Let's <Link to={"/login"}>Login</Link></p>
-                </div>
-            </div>
+        <Formik initialValues={{username:'',email: '',password:''}} validationSchema={loginschema}>
+        {(props)=><AuthForm {...props}/>}
+        </Formik>
         </div>
       </div>
     </section>

@@ -5,6 +5,32 @@ import {FiLock} from 'react-icons/fi'
 
 import pictLogin from '../assets/images/Group-login-phone.png';
 
+import * as Yup from 'yup'
+import { Formik } from 'formik'
+
+const loginschema = Yup.object().shape({
+  passworda: Yup.string().min(4).required('Required'),
+  passwordb: Yup.string().min(4).required('Required')
+})
+
+
+function AuthForm({errors, handleSubmit, handleChange}){
+  return(
+    <Form onSubmit={handleSubmit} className='d-flex flex-column gap-4'>
+        <Form.Group className="mb-3 input-group">
+            <div className='input-group-text input-no-border'><FiLock/></div>
+            <Form.Control name="passworda" onChange={handleChange} isInvalid={!!errors.passworda} type="password" placeholder="Create new password"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type="invalid">{errors.passworda}</Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group className="mb-3 input-group">
+        <div className='input-group-text input-no-border'><FiLock/></div>
+            <Form.Control name="passwordb" onChange={handleChange} isInvalid={!!errors.passworda} type="password" placeholder="Create new password"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type="invalid">{errors.passwordb}</Form.Control.Feedback>
+        </Form.Group>
+    </Form>
+  )
+}
+
 
 function Createpassword() {
   return (
@@ -35,17 +61,9 @@ function Createpassword() {
                 </h3>
                 <p>Now you can create a new password for your Zwallet account. Type your password twice so we can confirm your new passsword.                
                 </p>
-                <Form>
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiLock className='fw-inp-icon icon-style '/>
-                        <Form.Control name="password"  type="password" placeholder="Create new password"  className="fw-input "/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group><Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiLock className='fw-inp-icon icon-style '/>
-                        <Form.Control name="password"  type="password" placeholder="Create new password"  className="fw-input "/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group>
-                </Form>
+                <Formik initialValues={{passworda:'',passwordb:''}} validationSchema={loginschema}>
+                {(props)=><AuthForm {...props}/>}
+                </Formik>
                 <div class="d-grid">
                     <Link to={'/login'} class="btn btn-primary">Reset Pasword</Link>
                 </div>

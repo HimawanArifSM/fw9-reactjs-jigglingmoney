@@ -237,10 +237,13 @@
     border-radius: 10px;
 }
 .input-no-border{
-    border: unset;
-    border-bottom:1px solid gray;
+    border: unset !important;
+    border-bottom:1px solid gray !important;
     background-color: unset;
     border-radius: unset;
+}
+.input-no-border:focus{
+    outline: none !important ;
 }
 .pin-inp{
     width: 35px; 

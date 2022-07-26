@@ -5,6 +5,53 @@ import {Link} from 'react-router-dom'
 import {FiMail, FiLock} from 'react-icons/fi'
 
 import pictLogin from '../assets/images/Group-login-phone.png';
+import { Formik } from 'formik';
+import * as Yup from 'yup'
+
+const loginschema = Yup.object().shape({
+  email: Yup.string().email('Invalid email address format').required('Required'),
+  password: Yup.string().min(4).required('Required')
+})
+
+function AuthForm({errors, handleSubmit, handleChange}){
+  return(
+    <div class="d-flex gap-5 flex-column">
+        <h3>Start Accessing Banking Needs
+            With All Devices and All Platforms
+            With 30.000+ Users
+        </h3>
+        <p>Transfering money is eassier than ever, you can access Zwallet wherever  you are. Desktop, laptop, mobile phone? we cover all of that for you!                   
+        </p>
+        <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-4'> {/** INI PENTING */}
+          <Form.Group className="mb-3  input-group">
+            <div className='input-group-text input-no-border'>
+            <FiMail />
+            </div>
+            <Form.Control name="email" onChange={handleChange} isInvalid={!!errors.email} type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="mb-3 input-group">
+            <div className='input-group-text input-no-border'> 
+            <FiLock />
+            </div>
+            <Form.Control name="password" onChange={handleChange} isInvalid={!!errors.password} type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+          </Form.Group>
+        </Form>  {/** INI PENTING */}
+        <div class="text-end">
+            <Link to={"/resetpassword"}>Forgot password?</Link>
+        </div>
+        <div class="d-grid">
+            <Link to={"/home"} type='submit' className="btn btn-primary">Login</Link>
+        </div>
+        <div class="text-center">
+            <p>Don't have an account? Let's <Link to={"/register"}>Sign Up</Link></p>
+        </div>
+    </div>
+  )
+}
+
 
 function login() {
   return (
@@ -28,36 +75,9 @@ function login() {
           </div>
         </div>
         <div class="col-5 auth-form-wrapper ">
-            <div class="d-flex gap-5 flex-column">
-                <h3>Start Accessing Banking Needs
-                    With All Devices and All Platforms
-                    With 30.000+ Users
-                </h3>
-                <p>Transfering money is eassier than ever, you can access Zwallet wherever  you are. Desktop, laptop, mobile phone? we cover all of that for you!                   
-                </p>
-                <Form > {/** INI PENTING */}
-                  <Form.Group className="mb-3 d-flex align-items-center">
-                    <FiMail />
-                    <Form.Control name="email"  type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
-                    <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                  </Form.Group>
-
-                  <Form.Group className="mb-3 d-flex align-items-center">
-                    <FiLock />
-                    <Form.Control name="password"  type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
-                    <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                  </Form.Group>
-                </Form>  {/** INI PENTING */}
-                <div class="text-end">
-                    <Link to={"/resetpassword"}>Forgot password?</Link>
-                </div>
-                <div class="d-grid">
-                    <Link to={"/home"} class="btn btn-primary">Login</Link>
-                </div>
-                <div class="text-center">
-                    <p>Don't have an account? Let's <Link to={"/register"}>Sign Up</Link></p>
-                </div>
-            </div>
+            <Formik initialValues={{email: '', password:''}} validationSchema={loginschema}>
+            {(props)=><AuthForm {...props}/>}
+            </Formik>
         </div>
       </div>
     </section>

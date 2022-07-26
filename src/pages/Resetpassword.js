@@ -2,9 +2,29 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Form} from 'react-bootstrap'
 import {FiMail} from 'react-icons/fi'
-
 import pictLogin from '../assets/images/Group-login-phone.png';
+import * as Yup from 'yup'
+import { Formik } from 'formik'
 
+const loginschema = Yup.object().shape({
+  email: Yup.string().email('Invalid email address format').required('Required'),
+})
+
+
+function AuthForm({errors, handleSubmit, handleChange}){
+  return(
+    <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-4'>
+        <Form.Group className="mb-3  input-group">
+            <div className='input-group-text input-no-border'>
+            <FiMail />
+            </div>
+            <Form.Control name="email" onChange={handleChange} isInvalid={!!errors.email} type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+            <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
+        </Form.Group>
+    </Form>
+  )
+}
 
 function Resetpassword() {
   return (
@@ -35,16 +55,11 @@ function Resetpassword() {
                 </h3>
                 <p>To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.                 
                 </p>
-                <Form>
-                    <Form.Group className="mb-3 d-flex align-items-center flex-nowrap">
-                        <FiMail className='fw-inp-icon icon-style '/>
-                        <Form.Control name="email"  type="email" placeholder="Enter email"  className="fw-input "/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group>
-                </Form>
-                
+                <Formik initialValues={{email: ''}} validationSchema={loginschema}>
+                {(props)=><AuthForm {...props}/>}
+                </Formik>
                 <div class="d-grid">
-                    <Link to={'/createpassword'} class="btn btn-primary">Confirm</Link>
+                    <Link to={'/createpassword'} type='submit' class="btn btn-primary">Confirm</Link>
                 </div>
             </div>
         </div>

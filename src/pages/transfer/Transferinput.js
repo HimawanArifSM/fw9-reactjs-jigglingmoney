@@ -47,9 +47,9 @@ function Transferinput() {
                         </Form>
                         <p>Rp120.000 Available</p>
                         <Form>
-                            <Form.Group className="mb-3 d-flex align-items-center wd200">
+                            <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
                                 <FiEdit2 />
-                                <Form.Control name="text"  type="text" placeholder="Add some notes"  className="fw-input wd200"/>  {/** INI PENTING */}
+                                <Form.Control name="text"  type="text" placeholder="Add some notes"  className=" no-border2"/>  {/** INI PENTING */}
                                 <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                             </Form.Group>
                         </Form>
