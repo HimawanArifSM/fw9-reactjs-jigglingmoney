@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function Sidebar() {
   return (
-    <div className='col-12 col-md-2 d-flex flex-column justify-content-between sidebar'>
+    <div className='col-12 col-md-2 d-flex flex-column justify-content-between sidebar bg-white'>
         <div className="d-flex flex-column gap-5 ">
             <Link to={"/home"} className='align-items-center d-flex gap-1 f400-bck text-decoration-none'>
                 <AiOutlineAppstore />

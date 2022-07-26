@@ -29,14 +29,14 @@ function home() {
                             <p>+62 813-9387-7946</p>
                         </div>
                         <div class="d-flex flex-column gap-2 ">
-                            <a href="/transfer/transfer.html" className="btn blue-button align-items-center d-flex gap-1">
+                            <Link to={"/transfer"} className="btn blue-button align-items-center d-flex gap-1">
                                 <FiArrowUp />
                                 <p5>Transfer</p5>
-                            </a>
-                            <a href="/topUp/topUp.html" className="btn blue-button align-items-center d-flex gap-1">
+                            </Link>
+                            <Link to={"/topup"} className="btn blue-button align-items-center d-flex gap-1">
                                 <FiPlus />
                                 <p5>Top Up</p5>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <Row className='pad-sec-2 justify-content-between'>
