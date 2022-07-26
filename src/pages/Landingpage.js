@@ -9,6 +9,7 @@ import phone2 from '../assets/images/png-phone2.png'
 import user1 from '../assets/images/1.png'
 import user2 from '../assets/images/2.png'
 import user3 from '../assets/images/Rectangle 25.png'
+import { FiDownload, FiLock, FiPhone } from 'react-icons/fi'
 
 function Landingpage() {
   return (
@@ -51,15 +52,24 @@ function Landingpage() {
               <p >We have some great features from the application and it's totally free to use by all users around the world.</p>
           </div>
           <div className="flex-btwn pad-sec-1">
-              <div className='text-ctr pad-sec-1'>
+              <div className='text-ctr pad-sec-1 d-flex flex-column gap-4 align-items-center'>
+                  <div  className='bg-round align-items-center d-flex justify-content-center'>
+                  <FiPhone size={40} color='blue'/>
+                  </div>
                   <h2>24/7 Support</h2>
                   <p>We have 24/7 contact support so you can contact us whenever you want and we will respond it.</p>
               </div>
-              <div className='text-ctr pad-sec-1'>
+              <div className='text-ctr pad-sec-1 d-flex flex-column gap-4 align-items-center'>
+                  <div className='bg-round align-items-center d-flex justify-content-center'>
+                    <FiLock size={40} color='blue'/>
+                  </div>
                   <h2>Data Privacy</h2>
                   <p>We make sure your data is safe in our database and we will encrypt any data you submitted to us.</p>
               </div>
-              <div className='text-ctr pad-sec-1'>
+              <div className='text-ctr pad-sec-1 d-flex flex-column gap-4 align-items-center'>
+                  <div className='bg-round align-items-center d-flex justify-content-center'>
+                    <FiDownload size={40} color='blue'/>
+                  </div>
                   <h2>Easy Download</h2>
                   <p>Zwallet is 100% totally free to use it's now available on Google Play Store and App Store.</p>
               </div>

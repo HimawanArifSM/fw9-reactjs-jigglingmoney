@@ -288,3 +288,9 @@
  .modal-style{
     border: 1px solid gray;padding: 5px 5px; border-radius: 10px;
  }
+ .bg-round{
+    border-radius: 100%;
+    background-color: rgb(191, 191, 191);
+    width: 89px;
+    height: 89px;
+ }
