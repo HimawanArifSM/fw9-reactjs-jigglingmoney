@@ -6,17 +6,19 @@ import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
-// import tf2 from '../../assets/images/photo-momo-taro.png'
-// import tf3 from '../../assets/images/photo-jessica-keen.png'
-// import tf4 from '../../assets/images/photo-michael-le.png'
+import { useDispatch } from 'react-redux'
+
+import {customValue, amount} from '../../assets/redux/reducers/CustomValue'
+
 
 function Transferinput() {
+    const dispatch = useDispatch()
+
   return (
     <div>
         <div>
             <Header/>
         </div>
-
         <section>
         <Row className='pad-content mw-100'>
             <Sidebar/>
@@ -41,7 +43,7 @@ function Transferinput() {
                     <div class="d-flex flex-column align-items-center" >
                     <Form>
                             <Form.Group className="mb-3 d-flex align-items-center no-border">
-                                <Form.Control name="text"  type="text" placeholder="0.00"  className="fw-input no-border"/>  {/** INI PENTING */}
+                                <Form.Control name="text"  type="text" placeholder='0.00' onChange={(e)=>{dispatch(amount(e.target.value))}} className="fw-input no-border"/>  {/** INI PENTING */}
                                 <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                             </Form.Group>
                         </Form>
@@ -49,7 +51,7 @@ function Transferinput() {
                         <Form>
                             <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
                                 <FiEdit2 />
-                                <Form.Control name="text"  type="text" placeholder="Add some notes"  className=" no-border2"/>  {/** INI PENTING */}
+                                <Form.Control name="text"  type="text" placeholder='Add notes' onChange={(e)=>{dispatch(customValue(e.target.value))}} className=" no-border2"/>  {/** INI PENTING */}
                                 <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                             </Form.Group>
                         </Form>
@@ -58,7 +60,7 @@ function Transferinput() {
                         <Link to={"/transferconf"} class="btn btn-primary blue-button">Continue</Link>
                     </div>
                 </div>
-            </div>
+                </div>
                 </div>
             </Col>
         </Row>

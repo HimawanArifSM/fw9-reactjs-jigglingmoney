@@ -1,16 +1,17 @@
 import React from 'react'
 import { Row, Col} from 'react-bootstrap'
 import Modals from './Modals'
+import { useSelector } from "react-redux";
 
 import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
-// import tf2 from '../../assets/images/photo-momo-taro.png'
-// import tf3 from '../../assets/images/photo-jessica-keen.png'
-// import tf4 from '../../assets/images/photo-michael-le.png'
 
 function Transferconf() {
+    const value = useSelector((state)=>state.editValue.value)
+    const totalAmount = useSelector((state)=>state.editValue.amount)
+    console.log(value);
   return (
     <div>
         <div>
@@ -29,13 +30,12 @@ function Transferconf() {
                                 <p>Samuel Suhi</p>
                                 <p5>+62 813-8492-9994</p5>
                             </div>
-                            
                         </div>
                     </div>
                     <p>Details</p>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Amount</p>
-                        <h3>Rp100.000</h3>
+                        <h3>Rp{totalAmount}</h3>
                     </div>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Balance Left</p>
@@ -47,22 +47,18 @@ function Transferconf() {
                     </div>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Notes</p>
-                        <h3>For buying some socks</h3>
+                        <h3>{value}</h3>
                     </div>
                     <div className=" d-flex justify-content-end">
                         <Modals/>
                     </div>
-                
                 </div>
-                
             </Col>
         </Row>
         </section>
         <footer>
                 <Footer/>
         </footer>
-
-        
     </div>
   )
 }
