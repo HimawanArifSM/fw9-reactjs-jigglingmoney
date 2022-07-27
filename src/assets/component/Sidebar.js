@@ -31,7 +31,7 @@ function Sidebar() {
             </Link>
         </div>
         <div>
-            <div type='submit' className='align-items-center d-flex gap-1 f400-bck text-decoration-none' onClick={onLogout}>
+            <div type='submit' className='align-items-center d-flex gap-1 f400-bck text-decoration-none btn' onClick={onLogout}>
                 <FiLogOut />
                 <p5>Logout</p5>
             </div>

@@ -90,29 +90,26 @@ function Transfer() {
         <div>
             <Header/>
         </div>
-
         <section>
-        <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
+        <Row className='pad-content mw-100'>
             <Sidebar/>
-            <Col className='col-9'>
-                <div>
-                <div className="row d-flex flex-col gap-5 bg-white f400-bck">
-                <p className="font-700">Search Receiver</p>
-                <Form>
-                    <Form.Group className="mb-3 d-flex align-items-center fw-input">
-                        <FiSearch />
-                        <Form.Control name="search"  type="search" placeholder="Search receiver here"  className="no-border2"/>  {/** INI PENTING */}
-                        <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                    </Form.Group>
-                </Form>
-                    {data.results&&data.results.map(o=>{
-                        return(
-                            <Searchtrans pict={o.iduser} name={o.fullname} phonenumber={o.phonenumber}/>
-                        )
-                    })}
+            <Col className='col-md-10'>
+                <div className="flex-column d-flex gap-5 bg-white f400-bck">
+                    <p className="font-700">Search Receiver</p>
+                    <Form>
+                        <Form.Group className="mb-3 d-flex align-items-center fw-input">
+                            <FiSearch />
+                            <Form.Control name="search"  type="search" placeholder="Search receiver here"  className="no-border2"/>  {/** INI PENTING */}
+                            <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                        </Form.Group>
+                    </Form>
+                        {data.results&&data.results.map(o=>{
+                            return(
+                                <Searchtrans pict={o.iduser} name={o.fullname} phonenumber={o.phonenumber}/>
+                            )
+                        })}
                 </div>
-                </div>
-            </Col>   
+            </Col>
         </Row>
         </section>
         <footer>

@@ -18,11 +18,11 @@ function Managephone() {
         </div>
 
         <section>
-        <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
+        <Row className='pad-content mw-100'>
             <Sidebar/>
-            <Col className='col-9'>
+            <Col className='col-md-10'>
                 <div>
-                <div class="row d-flex flex-col gap-5 bg-white">
+                <div class="d-flex flex-column gap-5 bg-white">
                 <h3>Manage Phone Number</h3>
                 <p>You can only delete the phone number and then you must add another phone number.</p>
                 <div class="d-flex justify-content-between bg-white-shadow align-items-center margin-btm-ex" >

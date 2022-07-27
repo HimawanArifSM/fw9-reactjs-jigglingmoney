@@ -39,20 +39,20 @@ function App() {
         <Route path="resetpassword" element={<Resetpassword />} />
         <Route path="createpassword" element={<Createpassword />} />
         <Route path="home" element={<PrivateRoute><Home /></PrivateRoute>} />
-        <Route path="history" element={<History />} />
-        <Route path="topup" element={<Topup />} />
-        <Route path="transfer" element={<Transfer />} />
-        <Route path="transferinput" element={<Transferinput />} />
-        <Route path="transferconf" element={<Transferconf />} />
-        <Route path="failed" element={<Failed />} />
-        <Route path="success" element={<Success />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="personalinfo" element={<Personalinfo />} />
-        <Route path="changepassword" element={<Changepassword />} />
-        <Route path="changepin" element={<Changepin />} />
-        <Route path="newpin" element={<Newpin />} />
-        <Route path="addphone" element={<Addphone />} />
-        <Route path="managephone" element={<Managephone />} />
+        <Route path="history" element={<PrivateRoute><History /></PrivateRoute>} />
+        <Route path="topup" element={<PrivateRoute><Topup /></PrivateRoute>} />
+        <Route path="transfer" element={<PrivateRoute><Transfer /></PrivateRoute>} />
+        <Route path="transferinput" element={<PrivateRoute><Transferinput /></PrivateRoute>} />
+        <Route path="transferconf" element={<PrivateRoute><Transferconf /></PrivateRoute>} />
+        <Route path="failed" element={<PrivateRoute><Failed /></PrivateRoute>} />
+        <Route path="success" element={<PrivateRoute><Success /></PrivateRoute>} />
+        <Route path="profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+        <Route path="personalinfo" element={<PrivateRoute><Personalinfo /></PrivateRoute>} />
+        <Route path="changepassword" element={<PrivateRoute><Changepassword /></PrivateRoute>} />
+        <Route path="changepin" element={<PrivateRoute><Changepin /></PrivateRoute>} />
+        <Route path="newpin" element={<PrivateRoute><Newpin /></PrivateRoute>} />
+        <Route path="addphone" element={<PrivateRoute><Addphone /></PrivateRoute>} />
+        <Route path="managephone" element={<PrivateRoute><Managephone /></PrivateRoute>} />
 
         
       </Routes>

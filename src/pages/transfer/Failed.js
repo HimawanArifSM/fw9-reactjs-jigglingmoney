@@ -19,11 +19,11 @@ function Failed() {
         </div>
 
         <section>
-        <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
+        <Row className='pad-content mw-100'>
             <Sidebar/>
-            <Col className='col-9'>
+            <Col className='col-md-10'>
                 <div>
-                <div className="row d-flex flex-col gap-5 bg-white">
+                <div className="d-flex flex-column gap-5 bg-white">
                 <div class="text-center d-flex flex-column gap-3 ">
                     <FcHighPriority className='mx-auto' size={69}/>
                     <p class="font-700">Transfer Failed</p>

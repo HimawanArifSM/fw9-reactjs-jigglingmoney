@@ -16,11 +16,11 @@ function History() {
         </div>
 
         <section>
-        <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
+        <Row className='pad-content mw-100'>
             <Sidebar/>
-            <Col className='col-9'>
+            <Col className='col-md-10'>
                 <div>
-                    <div class="row d-flex flex-col gap-5 bg-white">
+                    <div class="d-flex flex-column gap-5 bg-white">
                         <p class="font-700">Transaction History</p>
                         <p5 class="font-400" >This Week</p5>
                         <div class="d-flex flex-row justify-content-between">

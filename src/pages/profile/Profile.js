@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { FiArrowRight,FiEdit2} from 'react-icons/fi'
 
 import user1 from '../../assets/images/profile-pict.png'
@@ -13,6 +13,11 @@ import Footer from '../../assets/component/Footer';
 // import tf4 from '../../assets/images/logo2.png'
 
 function Profile() {
+    const navigate = useNavigate()
+    const onLogout= () =>{
+        localStorage.removeItem('auth')
+        navigate('/')
+    }
   return (
     <div>
         <div>
@@ -42,9 +47,9 @@ function Profile() {
                     <h>Change PIN</h>
                     <FiArrowRight size={25}/>
                 </Link>
-                <Link to={"/login"} className="btn bg-gray justify-content-start d-flex">
+                <div type='submit' className="btn bg-gray justify-content-start d-flex" onClick={onLogout}>
                     <h>Logout</h>
-                </Link>
+                </div>
             </div>
                 </div>
             </Col>

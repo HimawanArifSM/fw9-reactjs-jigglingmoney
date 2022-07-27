@@ -17,11 +17,11 @@ function Personalinfo() {
         </div>
 
         <section>
-        <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
+        <Row className='pad-content mw-100'>
             <Sidebar/>
-            <Col className='col-md-9'>
+            <Col className='col-md-10'>
                 <div>
-                <div class="row d-flex flex-col gap-5 bg-white">
+                <div class="d-flex flex-column gap-5 bg-white">
                 <h3>Personal Information</h3>
                 <p>We got your personal information from the sign up proccess. If you want to make changes on your information, contact our support.</p>
                 <div class="bg-white">

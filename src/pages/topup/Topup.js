@@ -16,11 +16,11 @@ function Topup() {
         </div>
 
         <section>
-        <Row className='pad-content mw-100 gap-2 d-flex justify-content-between'>
+        <Row className='pad-content mw-100'>
             <Sidebar/>
-            <Col className='col-9'>
+            <Col className='col-md-10'>
                 <div>
-                <div className="row d-flex flex-col gap-4 bg-white">
+                <div className="d-flex flex-column gap-4 bg-white">
                 <h3>How To Top Up</h3>
                 
  
