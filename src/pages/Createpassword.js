@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {Form} from 'react-bootstrap'
+import { useNavigate} from 'react-router-dom'
+import {Button, Form} from 'react-bootstrap'
 import {FiLock} from 'react-icons/fi'
 
 import pictLogin from '../assets/images/Group-login-phone.png';
@@ -27,12 +27,23 @@ function AuthForm({errors, handleSubmit, handleChange}){
             <Form.Control name="passwordb" onChange={handleChange} isInvalid={!!errors.passworda} type="password" placeholder="Create new password"  className="fw-input"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid">{errors.passwordb}</Form.Control.Feedback>
         </Form.Group>
+        <div class="d-grid">
+            <Button type='submit' class="btn btn-primary">Reset Pasword</Button>
+        </div>
     </Form>
   )
 }
 
 
 function Createpassword() {
+  const navigate = useNavigate();
+  const onLoginRequest = (val) => {
+    if(val.passworda === '' || val.passwordb===''||val.passworda!==val.passwordb){
+      window.alert('Login failed! Lol')
+    }else{
+      navigate("/login");
+    }
+  }
   return (
     <section>
       <div className='d-flex flex-row'>
@@ -61,12 +72,10 @@ function Createpassword() {
                 </h3>
                 <p>Now you can create a new password for your Zwallet account. Type your password twice so we can confirm your new passsword.                
                 </p>
-                <Formik initialValues={{passworda:'',passwordb:''}} validationSchema={loginschema}>
+                <Formik onSubmit={onLoginRequest} initialValues={{passworda:'',passwordb:''}} validationSchema={loginschema}>
                 {(props)=><AuthForm {...props}/>}
                 </Formik>
-                <div class="d-grid">
-                    <Link to={'/login'} class="btn btn-primary">Reset Pasword</Link>
-                </div>
+                
             </div>
         </div>
       </div>

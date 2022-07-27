@@ -1,7 +1,7 @@
 
 import React from 'react'
-import { Form } from 'react-bootstrap';
-import {Link} from 'react-router-dom'
+import { Button, Form } from 'react-bootstrap';
+import {Link ,  useNavigate} from 'react-router-dom'
 import {FiMail, FiLock} from 'react-icons/fi'
 
 import pictLogin from '../assets/images/Group-login-phone.png';
@@ -38,22 +38,33 @@ function AuthForm({errors, handleSubmit, handleChange}){
             <Form.Control name="password" onChange={handleChange} isInvalid={!!errors.password} type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
           </Form.Group>
-        </Form>  {/** INI PENTING */}
+        
         <div class="text-end">
             <Link to={"/resetpassword"}>Forgot password?</Link>
         </div>
         <div class="d-grid">
-            <Link to={"/home"} type='submit' className="btn btn-primary">Login</Link>
+            <Button type='submit' className="btn btn-primary">Login</Button>
         </div>
         <div class="text-center">
             <p>Don't have an account? Let's <Link to={"/register"}>Sign Up</Link></p>
         </div>
+        </Form>  {/** INI PENTING */}
     </div>
   )
 }
 
 
-function login() {
+function Login() {
+  //const location = useLocation();
+  const navigate = useNavigate();
+  const onLoginRequest = (val) => {
+    if(val.email === '' && val.password === ''){
+      window.alert('Login failed! Lol')
+    }else{
+      localStorage.setItem('auth', 'token buat login')
+      navigate("/home");
+    }
+  }
   return (
     <section>
       <div className='d-flex flex-row'>
@@ -75,7 +86,9 @@ function login() {
           </div>
         </div>
         <div class="col-5 auth-form-wrapper ">
-            <Formik initialValues={{email: '', password:''}} validationSchema={loginschema}>
+            <Formik 
+            onSubmit={onLoginRequest}
+            initialValues={{email: '', password:''}} validationSchema={loginschema}>
             {(props)=><AuthForm {...props}/>}
             </Formik>
         </div>
@@ -84,4 +97,4 @@ function login() {
   )
 }
 
-export default login
+export default Login

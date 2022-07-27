@@ -21,7 +21,7 @@ function home() {
         <Row className='pad-content mw-100'>
             <Sidebar/>
             <Col className='col-10'>
-                <div>
+                <div className='d-flex flex-column gap-4'>
                     <div class="d-flex justify-content-between bg-main-ct pad-sec-1">
                         <div>
                             <p>Balance</p>
@@ -39,8 +39,8 @@ function home() {
                             </Link>
                         </div>
                     </div>
-                    <Row className='pad-sec-2 justify-content-between'>
-                        <Col className='col-12 col-md-7 bg-white pad-sec-1'>
+                    <Col className=' d-flex flex-md-row flex-column gap-4'>
+                        <Col md={7} className=' bg-white pad-sec-1 '>
                             <div class="d-flex justify-content-between">
                                     <div>
                                     <FiArrowDown/>
@@ -57,7 +57,7 @@ function home() {
                                 <img class="img-fluid" src={graph} alt="pict"/>
                             </div>
                         </Col>
-                        <Col className='d-flex flex-column col-4 bg-white   pad-sec-1 gap-4 '>
+                        <Col md={5} className='d-flex flex-column bg-white no-flex pad-sec-1 gap-4 '>
                             <div class="d-flex justify-content-between">
                                 <p5>Transaction History</p5>
                                 <Link className='f400-bck text-decoration-none' to={"/history"}>See all</Link>
@@ -111,7 +111,7 @@ function home() {
                                 </div>
                             </div>
                         </Col>
-                    </Row>
+                    </Col>
                 </div>
             </Col>
         </Row>

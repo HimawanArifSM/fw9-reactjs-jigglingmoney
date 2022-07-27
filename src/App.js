@@ -23,8 +23,10 @@ import Changepin from "./pages/profile/Changepin";
 import Newpin from "./pages/profile/Newpin";
 import Addphone from "./pages/profile/Addphone";
 import Managephone from "./pages/profile/Managephone";
+import PrivateRoute from "./assets/component/PrivateRoute";
 
 function App() {
+  React.useEffect(()=>{},[])
   return (
     <BrowserRouter>
       <Routes>
@@ -36,7 +38,7 @@ function App() {
         <Route path="createsuccess" element={<Createsuccess />} />
         <Route path="resetpassword" element={<Resetpassword />} />
         <Route path="createpassword" element={<Createpassword />} />
-        <Route path="home" element={<Home />} />
+        <Route path="home" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="history" element={<History />} />
         <Route path="topup" element={<Topup />} />
         <Route path="transfer" element={<Transfer />} />

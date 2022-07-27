@@ -297,3 +297,6 @@
     width: 89px;
     height: 89px;
  }
+ .no-flex{
+    flex: unset !important;
+ }

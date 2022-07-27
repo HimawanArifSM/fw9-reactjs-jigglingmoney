@@ -1,7 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {FiMail, FiLock, FiUser} from 'react-icons/fi'
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 
 import pictLogin from '../assets/images/Group-login-phone.png';
@@ -47,18 +47,27 @@ function AuthForm({errors, handleSubmit, handleChange}){
               <Form.Control name="password" onChange={handleChange} isInvalid={!!errors.password} type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
           </Form.Group>
-        </Form>  {/** INI PENTING */}
-        <div class="d-grid">
-            <Link to={"/createpin"} type='submit' class="btn btn-primary">Sign Up</Link>
+          <div class="d-grid">
+            <Button type='submit' class="btn btn-primary">Sign Up</Button>
         </div>
         <div class="text-center">
             <p>Already have an account? Let's <Link to={"/login"}>Login</Link></p>
         </div>
+        </Form>  {/** INI PENTING */}
+        
     </div>
   )
 }
 
 function Register() {
+  const navigate = useNavigate();
+  const onLoginRequest = (val) => {
+    if(val.email === '' || val.password === '' || val.username===''){
+      window.alert('Login failed! Lol')
+    }else{
+      navigate("/createpin");
+    }
+  }
   return (
     <section>
       <div className='d-flex flex-row'>
@@ -80,7 +89,7 @@ function Register() {
           </div>
         </div>
         <div class="col-5 auth-form-wrapper ">
-        <Formik initialValues={{username:'',email: '',password:''}} validationSchema={loginschema}>
+        <Formik onSubmit={onLoginRequest} initialValues={{username:'',email: '',password:''}} validationSchema={loginschema}>
         {(props)=><AuthForm {...props}/>}
         </Formik>
         </div>

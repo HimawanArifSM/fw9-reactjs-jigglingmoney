@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import {Form} from 'react-bootstrap'
+import { useNavigate} from 'react-router-dom'
+import {Button, Form} from 'react-bootstrap'
 import {FiMail} from 'react-icons/fi'
 import pictLogin from '../assets/images/Group-login-phone.png';
 import * as Yup from 'yup'
@@ -22,11 +22,22 @@ function AuthForm({errors, handleSubmit, handleChange}){
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
             <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
         </Form.Group>
+        <div class="d-grid">
+                    <Button type='submit' class="btn btn-primary">Confirm</Button>
+                </div>
     </Form>
   )
 }
 
 function Resetpassword() {
+  const navigate = useNavigate();
+  const onLoginRequest = (val) => {
+    if(val.email === ''){
+      window.alert('Login failed! Lol')
+    }else{
+      navigate("/createpassword");
+    }
+  }
   return (
     <section>
       <div className='d-flex flex-row'>
@@ -55,12 +66,9 @@ function Resetpassword() {
                 </h3>
                 <p>To reset your password, you must type your e-mail and we will send a link to your email and you will be directed to the reset password screens.                 
                 </p>
-                <Formik initialValues={{email: ''}} validationSchema={loginschema}>
+                <Formik onSubmit={onLoginRequest} initialValues={{email: ''}} validationSchema={loginschema}>
                 {(props)=><AuthForm {...props}/>}
                 </Formik>
-                <div class="d-grid">
-                    <Link to={'/createpassword'} type='submit' class="btn btn-primary">Confirm</Link>
-                </div>
             </div>
         </div>
       </div>
