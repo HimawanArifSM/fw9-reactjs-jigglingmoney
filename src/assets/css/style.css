@@ -301,3 +301,10 @@
  .no-flex{
     flex: unset !important;
  }
+ .width-auto{
+    height: 30px;
+    width: 300px;
+ }
+ .place-holder-center::placeholder {
+    text-align: center;
+}

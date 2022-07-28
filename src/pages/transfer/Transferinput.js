@@ -1,6 +1,6 @@
 import React from 'react'
-import { Row, Col, Form} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import { Row, Col, Form, Button} from 'react-bootstrap'
+import { useNavigate} from 'react-router-dom'
 import { FiEdit2} from 'react-icons/fi'
 import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
@@ -9,11 +9,54 @@ import Footer from '../../assets/component/Footer';
 import { useDispatch } from 'react-redux'
 
 import {customValue, amount} from '../../assets/redux/reducers/CustomValue'
+import { Formik } from 'formik';
+import * as Yup from 'yup'
 
+const loginschema = Yup.object().shape({
+  amount: Yup.number().min(10000).max(5000000).required('Required')
+})
+
+function AuthForm({errors, handleSubmit, handleChange}){
+    
+const dispatch = useDispatch()
+  return(
+    <Form noValidate onSubmit={handleSubmit}>
+        <div className="d-flex flex-column align-items-center" >
+                <Form.Group className="mb-3 d-flex flex-column align-items-center justify-content-center no-border "  >
+                    <Form.Control name="amount" onChange={handleChange} isInvalid={!!errors.amount} type="text" placeholder='0.00'  className="fw-input no-border text-align-center width-auto align-items-center place-holder-center"/>  {/** INI PENTING */}
+                    <Form.Control.Feedback className='width-auto align-items-center text-align-center' type="invalid">{errors.amount}</Form.Control.Feedback>
+                </Form.Group>
+            
+            <p>Rp120.000 Available</p>
+            
+                <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
+                    <FiEdit2 />
+                    <Form.Control name="text"  type="text" placeholder='Add notes' onChange={(e)=>{dispatch(customValue(e.target.value))}} className=" no-border2"/>  {/** INI PENTING */}
+                    <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                </Form.Group>
+        </div>
+        <div class=" d-flex justify-content-end">
+            <Button type='submit' class="btn btn-primary blue-button">Continue</Button>
+        </div>
+    </Form>
+  )
+}
 
 function Transferinput() {
+    const navigate = useNavigate();
+    
     const dispatch = useDispatch()
+    const onLoginRequest = (val) => {
+        console.log(val.amount);
+      if(val.amount === 0){
+        window.alert('Login failed! Lol')
+      }else{
+        localStorage.setItem('amount', 'jumlah uang')
+        dispatch(amount(val.amount))
+        navigate("/transferconf");
 
+      }
+    }
   return (
     <div>
         <div>
@@ -40,25 +83,11 @@ function Transferinput() {
                         <p>Type the amount you want to transfer and then
                             press continue to the next steps.</p>
                     </div>
-                    <div class="d-flex flex-column align-items-center" >
-                    <Form>
-                            <Form.Group className="mb-3 d-flex align-items-center no-border">
-                                <Form.Control name="text"  type="text" placeholder='0.00' onChange={(e)=>{dispatch(amount(e.target.value))}} className="fw-input no-border"/>  {/** INI PENTING */}
-                                <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                            </Form.Group>
-                        </Form>
-                        <p>Rp120.000 Available</p>
-                        <Form>
-                            <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
-                                <FiEdit2 />
-                                <Form.Control name="text"  type="text" placeholder='Add notes' onChange={(e)=>{dispatch(customValue(e.target.value))}} className=" no-border2"/>  {/** INI PENTING */}
-                                <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-                            </Form.Group>
-                        </Form>
-                    </div>
-                    <div class=" d-flex justify-content-end">
-                        <Link to={"/transferconf"} class="btn btn-primary blue-button">Continue</Link>
-                    </div>
+                    <Formik 
+                    onSubmit={onLoginRequest}
+                    initialValues={{amount: ''}} validationSchema={loginschema}>
+                    {(props)=><AuthForm {...props}/>}
+                    </Formik>
                 </div>
                 </div>
                 </div>

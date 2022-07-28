@@ -65,6 +65,7 @@ function Register() {
     if(val.email === '' || val.password === '' || val.username===''){
       window.alert('Login failed! Lol')
     }else{
+      localStorage.setItem('reg', 'token buat isi pin')
       navigate("/createpin");
     }
   }
