@@ -308,3 +308,7 @@
  .place-holder-center::placeholder {
     text-align: center;
 }
+.pin.form-control.is-invalid, .was-validated .pin.form-control:invalid{
+    background-image: none !important;
+    padding-right: 0px !important;
+}

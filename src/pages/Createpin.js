@@ -20,32 +20,32 @@ function AuthForm({errors, handleSubmit, handleChange}){
     <Form onSubmit={handleSubmit} className='d-flex flex-column gap-3'> {/** INI PENTING */}
         <div className='d-flex justify-content-center flex-row pin-input-wrapper gap-3'>
         <Form.Group className="mb-3 d-flex align-items-center pin-inpt">
-            <Form.Control onChange={handleChange} isInvalid={!!errors.a} name='a' maxlength="1" max="9" min="0"  className="pin-inp"/>  {/** INI PENTING */}
+            <Form.Control onChange={handleChange} isInvalid={!!errors.a} name='a' maxlength="1" max="9" min="0"  className="pin-inp pin"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3 d-flex align-items-center pin-inpt">
-            <Form.Control onChange={handleChange} isInvalid={!!errors.b} name='b' maxlength="1" max="9" min="0"  className="pin-inp"/>  {/** INI PENTING */}
+            <Form.Control onChange={handleChange} isInvalid={!!errors.b} name='b' maxlength="1" max="9" min="0"  className="pin-inp pin"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3 d-flex align-items-center pin-inpt ">
-            <Form.Control onChange={handleChange} isInvalid={!!errors.c} name='c' maxlength="1" max="9" min="0"  className="pin-inp"/>  {/** INI PENTING */}
+            <Form.Control onChange={handleChange} isInvalid={!!errors.c} name='c' maxlength="1" max="9" min="0"  className="pin-inp pin"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
         
         <Form.Group className="mb-3 d-flex align-items-center pin-inpt ">
-            <Form.Control onChange={handleChange} isInvalid={!!errors.d} name='d' maxlength="1" max="9" min="0"  className="pin-inp"/>  {/** INI PENTING */}
+            <Form.Control onChange={handleChange} isInvalid={!!errors.d} name='d' maxlength="1" max="9" min="0"  className="pin-inp pin"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3 d-flex align-items-center  pin-inpt">
-            <Form.Control onChange={handleChange} isInvalid={!!errors.e} name='e' maxlength="1" max="9" min="0"  className="pin-inp"/>  {/** INI PENTING */}
+            <Form.Control onChange={handleChange} isInvalid={!!errors.e} name='e' maxlength="1" max="9" min="0"  className="pin-inp pin"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3 d-flex align-items-center pin-inpt ">
-            <Form.Control onChange={handleChange} isInvalid={!!errors.f} name='f' maxlength="1" max="9" min="0"  className="pin-inp"/>  {/** INI PENTING */}
+            <Form.Control onChange={handleChange} isInvalid={!!errors.f} name='f' maxlength="1" max="9" min="0"  className="pin-inp pin"/>  {/** INI PENTING */}
             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
         </Form.Group>
         </div>

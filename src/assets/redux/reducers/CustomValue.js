@@ -14,10 +14,13 @@ const initialState = {
       },
       amount: (state, action)=>{
         state.amount = parseInt(action.payload, 10)
+      },
+      phoneNumber: (state, action)=>{
+        state.phoneNumber = action.payload
       }
     }
   });
 
-  export const { customValue, amount } = valueSlice.actions
+  export const { customValue, amount, phoneNumber } = valueSlice.actions
 
 export default valueSlice.reducer

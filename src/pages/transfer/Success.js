@@ -9,11 +9,16 @@ import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
+import { useSelector } from "react-redux";
+
 //import tf2 from '../../assets/images/failed.png'
 // import tf3 from '../../assets/images/photo-jessica-keen.png'
 // import tf4 from '../../assets/images/photo-michael-le.png'
 
 function Success() {
+    
+    const value = useSelector((state)=>state.editValue.value)
+    const totalAmount = useSelector((state)=>state.editValue.amount)
   return (
     <div>
         <div>
@@ -32,7 +37,7 @@ function Success() {
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Amount</p>
-                    <h3>Rp100.000</h3>
+                    <h3>Rp{totalAmount}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Balance Left</p>
@@ -44,7 +49,7 @@ function Success() {
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Notes</p>
-                    <h3>For buying some socks</h3>
+                    <h3>{value}</h3>
                 </div>
                 
                 <div className="d-flex flex-row justify-content-between bg-white-shadow">

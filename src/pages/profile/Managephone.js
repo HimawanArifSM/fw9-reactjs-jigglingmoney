@@ -5,12 +5,15 @@ import {FiClipboard} from 'react-icons/fi'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
+import { useSelector } from "react-redux";
+
 // import tf1 from '../../assets/images/dsb-prof-1.png'
 // import tf2 from '../../assets/images/logo.png'
 // import tf3 from '../../assets/images/7.png'
 // import tf4 from '../../assets/images/logo2.png'
 
 function Managephone() {
+    const phoneNumber = useSelector((state)=>state.editValue.phoneNumber)
   return (
     <div>
         <div>
@@ -29,6 +32,7 @@ function Managephone() {
                     <div>
                         <p>Primary</p>
                         <h3>+62 813 9387 7946</h3>
+                        <h3>+62 {phoneNumber}</h3>
                     </div>
                     <div>
                         <Link to={"/addphone"} type="button" class="btn"><FiClipboard/></Link>
