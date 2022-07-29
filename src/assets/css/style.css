@@ -271,6 +271,22 @@
         padding: 5px 5px 5px 8px;
         background-color: white;
     }
+    .sb-brake{
+        flex-direction: row !important;
+    }
+    .no-disp{
+        display: none !important;
+        text-rendering: unset !important;
+    }
+    .pad-content{
+        padding: 5px 5px !important;
+    }
+    .col-10{
+        width: 100%;
+    }
+    .zwallet-footer{
+        padding: 10px 10px !important;
+    }
  }
  .pin-inpt{
     border: 1px solid gray;padding: 5px 5px; border-radius: 10px;height: 60px;
