@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import pictLogin from '../assets/images/Group-login-phone.png';
 import { Formik } from 'formik';
 import * as Yup from 'yup'
+import { useSelector } from 'react-redux';
 
 const loginschema = Yup.object().shape({
   a: Yup.number().required('Required'),
@@ -65,6 +66,13 @@ function Createpin() {
       navigate("/createsuccess");
     }
   }
+  
+  const token = useSelector((state) => state.auth.token);
+  React.useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate, token]);
   return (
     <section>
       <div className='d-flex flex-row'>

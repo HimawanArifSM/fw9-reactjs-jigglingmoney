@@ -1,11 +1,19 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import {Link, useNavigate} from 'react-router-dom'
 
 import pictLogin from '../assets/images/Group-login-phone.png';
 import success from '../assets/images/success.png';
 
 
 function Createsuccess() {
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+  React.useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate, token]);
   return (
     <section>
       <div className='d-flex flex-row'>

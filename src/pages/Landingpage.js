@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {  Navbar, Container} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import phone1 from '../assets/images/png-phone.png'
 import partnerBrand from '../assets/images/group-24.png'
@@ -10,8 +10,16 @@ import user1 from '../assets/images/1.png'
 import user2 from '../assets/images/2.png'
 import user3 from '../assets/images/Rectangle 25.png'
 import { FiDownload, FiLock, FiPhone } from 'react-icons/fi'
+import { useSelector } from 'react-redux'
 
 function Landingpage() {
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+  React.useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate, token]);
   return (
     <>
     <section>
