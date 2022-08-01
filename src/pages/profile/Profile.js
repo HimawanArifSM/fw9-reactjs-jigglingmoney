@@ -9,18 +9,20 @@ import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfile } from '../../assets/redux/asyncActions/profile'
+import { logout } from '../../assets/redux/reducers/auth'
 // import tf1 from '../../assets/images/dsb-prof-1.png'
 // import tf2 from '../../assets/images/logo.png'
 // import tf3 from '../../assets/images/7.png'
 // import tf4 from '../../assets/images/logo2.png'
 
 function Profile() {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const onLogout= () =>{
-        localStorage.removeItem('auth')
+        dispatch(logout())
         navigate('/')
     }
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const response = useSelector((state) => state.coba?.results);
     const fullName= response?.results?.fullname
     const splitName = response?.results?.fullname.split(' ')
