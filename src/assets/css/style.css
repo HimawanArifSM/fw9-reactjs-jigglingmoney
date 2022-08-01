@@ -275,6 +275,11 @@
     height: auto;
     border-radius: 10px;
 }
+.pict-style3{
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+}
 @media (max-width: 767.98px) { 
     .header-bg{
         padding: 5px 5px 5px 8px;

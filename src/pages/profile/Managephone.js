@@ -5,7 +5,8 @@ import {FiClipboard} from 'react-icons/fi'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProfile } from '../../assets/redux/asyncActions/profile';
 
 // import tf1 from '../../assets/images/dsb-prof-1.png'
 // import tf2 from '../../assets/images/logo.png'
@@ -13,7 +14,13 @@ import { useSelector } from "react-redux";
 // import tf4 from '../../assets/images/logo2.png'
 
 function Managephone() {
-    const phoneNumber = useSelector((state)=>state.editValue.phoneNumber)
+    //const phoneNumber = useSelector((state)=>state.editValue.phoneNumber)
+    const dispatch = useDispatch();
+    const response = useSelector((state) => state.coba?.results);
+    React.useEffect(()=>{
+        dispatch(getProfile())
+        //console.log(response?.results?.fullname);
+    }, []);
   return (
     <div>
         <div>
@@ -31,8 +38,7 @@ function Managephone() {
                 <div class="d-flex justify-content-between bg-white-shadow align-items-center margin-btm-ex" >
                     <div>
                         <p>Primary</p>
-                        <h3>+62 813 9387 7946</h3>
-                        <h3>+62 {phoneNumber}</h3>
+                        <h3>+62 {response?.results?.phonenumber.slice(1)}</h3>
                     </div>
                     <div>
                         <Link to={"/addphone"} type="button" class="btn"><FiClipboard/></Link>

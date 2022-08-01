@@ -8,6 +8,7 @@ const http = (token)=>{
     return axios.create({
         headers,
         baseURL: 'http://localhost:3333'
+        //baseURL: process.env.REACT_APP_BACKEND_URL
     })
 }
 export default http
