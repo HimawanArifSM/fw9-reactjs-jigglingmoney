@@ -7,6 +7,8 @@ import {FiMail, FiLock} from 'react-icons/fi'
 import pictLogin from '../assets/images/Group-login-phone.png';
 import { Formik } from 'formik';
 import * as Yup from 'yup'
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../assets/redux/asyncActions/auth';
 
 const loginschema = Yup.object().shape({
   email: Yup.string().email('Invalid email address format').required('Required'),
@@ -56,15 +58,30 @@ function AuthForm({errors, handleSubmit, handleChange}){
 
 function Login() {
   //const location = useLocation();
+  // const navigate = useNavigate();
+  // const onLoginRequest = (val) => {
+  //   if(val.email === '' && val.password === ''){
+  //     window.alert('Login failed! Lol')
+  //   }else{
+  //     localStorage.setItem('auth', 'token buat login')
+  //     navigate("/home");
+  //   }
+  // }
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth?.token);
   const navigate = useNavigate();
-  const onLoginRequest = (val) => {
-    if(val.email === '' && val.password === ''){
-      window.alert('Login failed! Lol')
-    }else{
-      localStorage.setItem('auth', 'token buat login')
+
+  const onLogin = (value) => {
+    const data = { email: value.email, password: value.password };
+    dispatch(login(data));
+    console.log(data);
+  };
+
+  React.useEffect(() => {
+    if (token) {
       navigate("/home");
     }
-  }
+  }, [navigate, token]);
   return (
     <section>
       <div className='d-flex flex-row'>
@@ -87,7 +104,7 @@ function Login() {
         </div>
         <div class="col-5 auth-form-wrapper ">
             <Formik 
-            onSubmit={onLoginRequest}
+            onSubmit={onLogin}
             initialValues={{email: '', password:''}} validationSchema={loginschema}>
             {(props)=><AuthForm {...props}/>}
             </Formik>

@@ -6,9 +6,6 @@ import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
-// import tf2 from '../../assets/images/photo-momo-taro.png'
-// import tf3 from '../../assets/images/photo-jessica-keen.png'
-// import tf4 from '../../assets/images/photo-michael-le.png'
 
 function Searchtrans(props){
     return(

@@ -2,12 +2,15 @@ import React from 'react'
 //import { Button } from 'react-bootstrap'
 import { AiOutlineAppstore } from 'react-icons/ai'
 import { FiArrowUp, FiLogOut, FiPlus, FiUser } from 'react-icons/fi'
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
+import {logout} from '../redux/reducers/auth'
 
 function Sidebar() {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const onLogout= () =>{
-        localStorage.removeItem('auth')
+        dispatch(logout())
         navigate('/')
     }
   return (

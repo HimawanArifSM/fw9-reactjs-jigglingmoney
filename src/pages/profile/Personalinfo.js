@@ -4,12 +4,26 @@ import {Link} from 'react-router-dom'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfile } from '../../assets/redux/asyncActions/profile';
 // import tf1 from '../../assets/images/dsb-prof-1.png'
 // import tf2 from '../../assets/images/logo.png'
 // import tf3 from '../../assets/images/7.png'
 // import tf4 from '../../assets/images/logo2.png'
 
 function Personalinfo() {
+    const dispatch = useDispatch();
+    const response = useSelector((state) => state.coba?.results);
+    const fullName= response?.results?.fullname
+    const splitName = response?.results?.fullname.split(' ')
+    const firstName = splitName[0];
+    const lastName = fullName.slice(`${firstName.length}`)
+    console.log(lastName);
+  
+    React.useEffect(()=>{
+        dispatch(getProfile())
+        //console.log(response?.results?.fullname);
+    }, []);
   return (
     <div>
         <div>
@@ -26,20 +40,20 @@ function Personalinfo() {
                 <p>We got your personal information from the sign up proccess. If you want to make changes on your information, contact our support.</p>
                 <div class="bg-white">
                     <p>First Name</p>
-                    <h5>Robert</h5>
+                    <h5>{firstName}</h5>
                 </div>
                 <div class="bg-white">
                     <p>Last Name</p>
-                    <h5>Chandler</h5>
+                    <h5>{lastName}</h5>
                 </div>
                 <div class="bg-white">
                     <p>Verified E-mail</p>
-                    <h5>pewdiepie1@gmail.com</h5>
+                    <h5>{response?.results?.email}</h5>
                 </div>
                 <div class="d-flex justify-content-between align-items-center bg-white">
                     <div>
                         <p>Phone Number</p>
-                        <h5>+62 813-9387-7946</h5>
+                        <h5>+62 {response?.results?.phonenumber.slice(1)}</h5>
                     </div>
                     <div>
                         <Link className='text-decoration-none font-400' to={"/managephone"}>Manage</Link>
