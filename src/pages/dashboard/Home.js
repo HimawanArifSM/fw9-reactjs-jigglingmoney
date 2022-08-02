@@ -45,10 +45,11 @@ const dispatch = useDispatch();
 const token = useSelector((state) => state.auth.token);
 //const profile = useSelector((state) => state.profile.data);
 const resHistory = useSelector((state) => state.ressHistory?.results);
+const phone = response?.phonenumber?.slice(1)
 
 React.useEffect(() => {
   dispatch(getProfile(token));
-  dispatch(getHistory())
+  dispatch(getHistory(token))
 }, []);
 
   return (
@@ -62,8 +63,8 @@ React.useEffect(() => {
                     <div className="d-flex justify-content-between bg-main-ct pad-sec-1">
                         <div>
                             <p>Balance</p>
-                            <h4>Rp{response?.results?.balance}</h4>
-                            <p>+62 {response?.results?.phonenumber.slice(1)}</p>
+                            <h4>Rp{response?.balance}</h4>
+                            <p>+62 {phone}</p>
                         </div>
                         <div class="d-flex flex-column gap-2 ">
                             <Link to={"/transfer"} className="btn blue-button align-items-center d-flex gap-1">

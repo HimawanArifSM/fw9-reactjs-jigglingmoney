@@ -1,13 +1,13 @@
 import React from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {FiMail, FiLock, FiUser} from 'react-icons/fi'
-import { Button, Form } from 'react-bootstrap';
-
-
+import { Alert, Button, Form } from 'react-bootstrap';
+import { register } from '../assets/redux/asyncActions/auth';
 import pictLogin from '../assets/images/Group-login-phone.png';
 import * as Yup from 'yup'
 import { Formik } from 'formik'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEmail } from '../assets/redux/reducers/auth';
 
 const loginschema = Yup.object().shape({
   username: Yup.string().min(4).required('Required'),
@@ -16,6 +16,16 @@ const loginschema = Yup.object().shape({
 })
 
 function AuthForm({errors, handleSubmit, handleChange}){
+  const navigate = useNavigate();
+  const successMsg = useSelector((state) => state.auth.successMsg);
+  const errorMsg = useSelector((state) => state.auth.errorMsg);
+
+  React.useEffect(() => {
+    if (successMsg) {
+      navigate("/createpin", { state: { successMsg } });
+    }
+  }, [navigate, successMsg]);
+
   return(
     <div class="d-flex gap-5 flex-column">
         <h3>Start Accessing Banking Needs
@@ -24,6 +34,7 @@ function AuthForm({errors, handleSubmit, handleChange}){
         </h3>
         <p>Transfering money is eassier than ever, you can access Zwallet wherever  you are. Desktop, laptop, mobile phone? we cover all of that for you!                   
         </p>
+        {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
         <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-4'> {/** INI PENTING */}
             <Form.Group className="mb-3  input-group">
               <div className='input-group-text input-no-border'>
@@ -61,16 +72,19 @@ function AuthForm({errors, handleSubmit, handleChange}){
 }
 
 function Register() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
   const onLoginRequest = (val) => {
-    if(val.email === '' || val.password === '' || val.username===''){
-      window.alert('Login failed! Lol')
-    }else{
-      localStorage.setItem('reg', 'token buat isi pin')
-      navigate("/createpin");
-    }
+    // if(val.email === '' || val.password === '' || val.username===''){
+    //   window.alert('Login failed! Lol')
+    // }else{
+      
+      
+    // }
+    dispatch(register(val))
+    dispatch(setEmail(val.email))
   }
-  const token = useSelector((state) => state.auth.token);
   React.useEffect(() => {
     if (token) {
       navigate("/home");

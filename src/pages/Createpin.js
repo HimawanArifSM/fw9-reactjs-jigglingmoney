@@ -1,11 +1,12 @@
 import React from 'react'
 import { useNavigate} from 'react-router-dom'
-import { Button, Form } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 
 import pictLogin from '../assets/images/Group-login-phone.png';
 import { Formik } from 'formik';
 import * as Yup from 'yup'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createPin } from '../assets/redux/asyncActions/auth';
 
 const loginschema = Yup.object().shape({
   a: Yup.number().required('Required'),
@@ -17,6 +18,15 @@ const loginschema = Yup.object().shape({
 })
 
 function AuthForm({errors, handleSubmit, handleChange}){
+  //const navigate = useNavigate();
+  //const successMsg = useSelector((state) => state.auth.successMsg);
+ 
+  // React.useEffect(() => {
+  //   if (successMsg) {
+  //     navigate("/createsuccess", { state: { successMsg } });
+  //   }
+  // }, [navigate, successMsg]);
+
   return(
     <Form onSubmit={handleSubmit} className='d-flex flex-column gap-3'> {/** INI PENTING */}
         <div className='d-flex justify-content-center flex-row pin-input-wrapper gap-3'>
@@ -58,16 +68,21 @@ function AuthForm({errors, handleSubmit, handleChange}){
 }
 
 function Createpin() {
+  const errorMsg = useSelector((state) => state.auth.errorMsg);
+  const token = useSelector((state) => state.auth.token);
+  
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const email = useSelector((state)=>state.auth.email)
   const onLoginRequest = (val) => {
     if(val.a === '' || val.b === '' || val.c===''||val.d===''||val.e===''||val.f===''){
       window.alert('Login failed! Lol')
     }else{
-      navigate("/createsuccess");
+      const data = {email: email, pin: val.a + val.b + val.c + val.d + val.e + val.f}
+      dispatch(createPin(data));
+      navigate('/createsuccess')
     }
   }
-  
-  const token = useSelector((state) => state.auth.token);
   React.useEffect(() => {
     if (token) {
       navigate("/home");
@@ -101,6 +116,7 @@ function Createpin() {
                 </h3>
                 <p>Create 6 digits pin to secure all your money and your data in Zwallet app. Keep it secret and don't tell anyone about your Zwallet account password and the PIN.                  
                 </p>
+                {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}
                 <Formik onSubmit={onLoginRequest} initialValues={{a: '', b: '', c: '', d: '', e: '', f: '', }} validationSchema={loginschema}>
                 {(props)=><AuthForm {...props}/>}
                 </Formik>

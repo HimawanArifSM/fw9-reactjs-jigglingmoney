@@ -12,10 +12,10 @@ import { login } from '../assets/redux/asyncActions/auth';
 
 const loginschema = Yup.object().shape({
   email: Yup.string().email('Invalid email address format').required('Required'),
-  password: Yup.string().min(4).required('Required')
+  password: Yup.string().min(8).required('Required')
 })
 
-function AuthForm({errors, handleSubmit, handleChange}){
+function AuthForm(props){
   return(
     <div class="d-flex gap-5 flex-column">
         <h3>Start Accessing Banking Needs
@@ -24,21 +24,21 @@ function AuthForm({errors, handleSubmit, handleChange}){
         </h3>
         <p>Transfering money is eassier than ever, you can access Zwallet wherever  you are. Desktop, laptop, mobile phone? we cover all of that for you!                   
         </p>
-        <Form noValidate onSubmit={handleSubmit} className='d-flex flex-column gap-4'> {/** INI PENTING */}
+        <Form noValidate onSubmit={props.handleSubmit} className='d-flex flex-column gap-4'> {/** INI PENTING */}
           <Form.Group className="mb-3  input-group">
             <div className='input-group-text input-no-border'>
             <FiMail />
             </div>
-            <Form.Control name="email" onChange={handleChange} isInvalid={!!errors.email} type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
-            <Form.Control.Feedback type='invalid'>{errors.email}</Form.Control.Feedback>
+            <Form.Control name="email" onChange={props.handleChange} isInvalid={!!props.errors.email} type="email" placeholder="Enter email"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type='invalid'>{props.errors.email}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-3 input-group">
             <div className='input-group-text input-no-border'> 
             <FiLock />
             </div>
-            <Form.Control name="password" onChange={handleChange} isInvalid={!!errors.password} type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
-            <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+            <Form.Control name="password" onChange={props.handleChange} isInvalid={!!props.errors.password} type="password" placeholder="Password"  className="fw-input"/>  {/** INI PENTING */}
+            <Form.Control.Feedback type="invalid">{props.errors.password}</Form.Control.Feedback>
           </Form.Group>
         
         <div class="text-end">
@@ -57,16 +57,6 @@ function AuthForm({errors, handleSubmit, handleChange}){
 
 
 function Login() {
-  //const location = useLocation();
-  // const navigate = useNavigate();
-  // const onLoginRequest = (val) => {
-  //   if(val.email === '' && val.password === ''){
-  //     window.alert('Login failed! Lol')
-  //   }else{
-  //     localStorage.setItem('auth', 'token buat login')
-  //     navigate("/home");
-  //   }
-  // }
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth?.token);
   const navigate = useNavigate();

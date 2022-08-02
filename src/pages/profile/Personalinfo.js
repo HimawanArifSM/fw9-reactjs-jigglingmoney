@@ -14,15 +14,16 @@ import { getProfile } from '../../assets/redux/asyncActions/profile';
 function Personalinfo() {
     const dispatch = useDispatch();
     const response = useSelector((state) => state.coba?.results);
-    const fullName= response?.results?.fullname
-    const splitName = response?.results?.fullname.split(' ')
+    const fullName= response?.fullname
+    const splitName = response?.fullname?.split(' ')
     const firstName = splitName[0];
     const lastName = fullName.slice(`${firstName.length}`)
-    console.log(lastName);
-  
+    const phone = response?.phonenumber?.slice(1)
+    //console.log(lastName);
+    const token = useSelector((state) => state.auth.token);
     React.useEffect(()=>{
-        dispatch(getProfile())
-        //console.log(response?.results?.fullname);
+        dispatch(getProfile(token))
+        //console.log(response?.fullname);
     }, []);
   return (
     <div>
@@ -48,12 +49,12 @@ function Personalinfo() {
                 </div>
                 <div class="bg-white">
                     <p>Verified E-mail</p>
-                    <h5>{response?.results?.email}</h5>
+                    <h5>{response?.email}</h5>
                 </div>
                 <div class="d-flex justify-content-between align-items-center bg-white">
                     <div>
                         <p>Phone Number</p>
-                        <h5>+62 {response?.results?.phonenumber.slice(1)}</h5>
+                        <h5>+62 {phone}</h5>
                     </div>
                     <div>
                         <Link className='text-decoration-none font-400' to={"/managephone"}>Manage</Link>

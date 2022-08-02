@@ -10,8 +10,8 @@ function Sidebar() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const onLogout= () =>{
-        dispatch(logout())
-        navigate('/')
+        dispatch(logout(()=>{
+            navigate('/')}))
     }
   return (
     <div className='col-12 col-md-2 d-flex flex-md-column flex-row justify-content-md-between sidebar bg-white mw-md-100 mw-100 gap-5'>
