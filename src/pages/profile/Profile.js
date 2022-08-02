@@ -53,7 +53,7 @@ function Profile() {
                 <div className="justify-content-center d-flex"><img  className='pict-style2' src={'http://localhost:3333/publik/uploads/'+profile.picture} alt="pict"/>
                 </div>
                 <div className='d-flex gap-2 align-items-center justify-content-center'><FiEdit2 />Edit</div>
-                <h3>{profile.fullName}</h3>
+                <h3>{profile.fullname}</h3>
                 <h5 >+62 {profile.phonenumber?.slice(1)}</h5>
                 <Link to={"/personalinfo"} className="btn d-flex justify-content-between bg-gray">
                     <h>Personal Information</h>
