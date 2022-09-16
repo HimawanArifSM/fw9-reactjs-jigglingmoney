@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-<image url={./screenshot/HomePage} />
+<image src={./screenshot/HomePage} heigth={240} />
 In the project directory, you can run:
 
 ### `yarn start`
