@@ -87,7 +87,7 @@ function Newpin() {
                 <div class="d-flex gap-5 flex-column bg-white">
                 <h3>Change PIN
                 </h3>
-                <p>Enter your new 6 digits Zwallet PIN below to continue to the next steps.           
+                <p>Enter your new 6 digits JMoney PIN below to continue to the next steps.           
                 </p>
                     <div className='pad-content '>
                     <Formik onSubmit={onLoginRequest} initialValues={{a: '', b: '', c: '', d: '', e: '', f: '', }} validationSchema={loginschema}>

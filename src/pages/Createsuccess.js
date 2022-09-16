@@ -19,7 +19,7 @@ function Createsuccess() {
       <div className='d-flex flex-row'>
         <div class="col-md-7 auth-intro auth-form-wrapper display-none">
           <div>
-            <h1>Zwallet</h1>
+            <h1>JMoney</h1>
           </div>
           <div class="d-flex align-items-center flex-column">
             <div>
@@ -27,9 +27,9 @@ function Createsuccess() {
             </div>
             <div>
               <h1>App that Covering Banking Needs.</h1>
-              <p1>Zwallet is an application that focussing in banking needs for all users
+              <p1>JMoney is an application that focussing in banking needs for all users
                 in the world. Always updated and always following world trends.
-                5000+ users registered in Zwallet everyday with worldwide
+                5000+ users registered in JMoney everyday with worldwide
                 users coverage.</p1>
             </div>
           </div>
@@ -39,7 +39,7 @@ function Createsuccess() {
                 <img className='scs-icon' src={success} alt='Pict'/>
                 <h3>Your PIN Was Successfully Created
                 </h3>
-                <p>Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!                 
+                <p>Your PIN was successfully created and you can now access all the features in JMoney. Login to your new account and start exploring!                 
                 </p>
                 <div class="d-grid">
                     <Link to={'/login'} class="btn btn-primary">Login Now</Link>

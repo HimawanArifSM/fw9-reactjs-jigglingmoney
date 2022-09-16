@@ -24,7 +24,7 @@ function Header() {
     <div>
         <Navbar className='zwallet-footer mw-100' expand='sm'>
             <Container>
-                <Link className='navbar-brand highlight fw-bold' to='/home'>Zwallet</Link>
+                <Link className='navbar-brand highlight fw-bold' to='/home'>JWallet</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <div className="d-flex p-3 p-md-0 flex-column flex-sm-row gap-3 ms-auto align-items-center">

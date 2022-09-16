@@ -79,7 +79,7 @@ function Landingpage() {
                     <FiDownload size={40} color='blue'/>
                   </div>
                   <h2>Easy Download</h2>
-                  <p>Zwallet is 100% totally free to use it's now available on Google Play Store and App Store.</p>
+                  <p>JMoney is 100% totally free to use it's now available on Google Play Store and App Store.</p>
               </div>
           </div>
         </div>
@@ -102,11 +102,11 @@ function Landingpage() {
           </div>
           <div className='flex-col'>
               <div className='margin-btm'>
-                  <h1>All The <span className='main-clr'>Great</span> Zwallet Features.</h1>
+                  <h1>All The <span className='main-clr'>Great</span> JMoney Features.</h1>
               </div>
               <div className='bg-white margin-btm'>
                   <h3>1. Small Fee</h3>
-                  <p>We only charge 5% of every success transaction done in Zwallet app.</p>
+                  <p>We only charge 5% of every success transaction done in JMoney app.</p>
               </div>
               <div className='bg-white margin-btm'>
                   <h3>2. Data Secured</h3>
@@ -114,7 +114,7 @@ function Landingpage() {
               </div>
               <div className='bg-white'>
                   <h3>3. User Friendly</h3>
-                  <p>Zwallet come up with modern and sleek design and not complicated.</p>
+                  <p>JMoney come up with modern and sleek design and not complicated.</p>
               </div>
           </div>
         </div>
@@ -134,26 +134,26 @@ function Landingpage() {
               <div className='text-ctr pad-sec-1'>
                   <img src={user2} alt="pict"/>
                   <h2>Jessica Mera</h2>
-                  <p>“I use Zwallet to manage all financial needs. It's super easy to use and it's 100% free app”</p>
+                  <p>“I use JMoney to manage all financial needs. It's super easy to use and it's 100% free app”</p>
               </div>
               <div className='text-ctr pad-sec-1'>
                   <img src={user3} alt="pict"/>
                   <h2>Robert Chandler</h2>
-                  <p>“Since I'm using this app, I'm not going to move to another similar app. Thank you Zwallet!”</p>
+                  <p>“Since I'm using this app, I'm not going to move to another similar app. Thank you JMoney!”</p>
               </div>
           </div>
         </div>
       </section4>
       <section5>
         <div className='bg-main pad-main flex-col'>
-          <h1>Zwallet</h1>
+          <h1>JMoney</h1>
           <p>Simplify financial needs and saving much time in banking needs with one single app.</p>
           <hr/>
           <div className='flex-btwn'>
-              <p>2020 Zwallet. All right reserved.</p>
+              <p>2020 JMoney. All right reserved.</p>
               <div >            
                   <p>+62 5637 8882 9901</p>
-                  <p>contact@zwallet.com</p>
+                  <p>contact@JMoney.com</p>
               </div>
           </div>
         </div>

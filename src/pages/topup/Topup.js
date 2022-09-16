@@ -46,7 +46,7 @@ function Topup() {
                     <span className='f400-main'>7. </span>   Press transfer / top up.
                 </div>
                 <div className="bg-white-shadow pad-sec-2">
-                    <span className='f400-main'>8. </span>   You can see your money in Zwallet within 3 hours.
+                    <span className='f400-main'>8. </span>   You can see your money in JMoney within 3 hours.
                 </div>
 
             </div>
