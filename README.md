@@ -25,9 +25,9 @@
 #
 ## Screenshot
 <div align="center">
-<img src="./screenshot/LandingPage.png" heigth="240" />
-<img src="./screenshot/Login.png" heigth="240" />
-<img src="./screenshot/Home.png" heigth="240" />
-<img src="./screenshot/TopUp.png" heigth="240" />
-<img src="./screenshot/Transfer.png" heigth="240" />
+<img src="./screenshot/LandingPage.png" height="240" width="440" />
+<img src="./screenshot/Login.png" height="240px" width="440" />
+<img src="./screenshot/Home.png" height="240px" width="440" />
+<img src="./screenshot/TopUp.png" height="240px" width="440" />
+<img src="./screenshot/Transfer.png" height="240px" width="440" />
 </div>
