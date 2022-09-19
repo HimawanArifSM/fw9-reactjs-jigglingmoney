@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import input from './CustomValue'
+import input from './transaction'
 import profile from "./profile";
 import auth from './auth'
 import history from "./history";

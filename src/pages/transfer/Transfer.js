@@ -1,11 +1,14 @@
 import React from 'react'
 import {Row, Col, Form} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import {FiSearch} from 'react-icons/fi'
 import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
+import {useDispatch, useSelector} from 'react-redux';
+import { getimage, getname, getphone, getreceiver } from '../../assets/redux/reducers/transaction'
+import {getAllProfile} from '../../assets/redux/asyncActions/transaction'
 
 function Searchtrans(props){
     return(
@@ -22,66 +25,20 @@ function Searchtrans(props){
 } 
 
 function Transfer() {
-    const [data, setData]=React.useState({})
-    React.useEffect(()=>{
-        setData({
-            "success": true,
-            "message": "list all profiles",
-            "pageInfo": {
-                "totalData": 7,
-                "totalpage": 2,
-                "currentpage": 1,
-                "nextPage": 2,
-                "prevpage": null
-            },
-            "results": [
-                {
-                    "id": 39,
-                    "iduser": 14,
-                    "fullname": "coba123",
-                    "balance": "0",
-                    "picture": "1657201194123.webp",
-                    "phonenumber": "081233336666"
-                },
-                {
-                    "id": 40,
-                    "iduser": 13,
-                    "fullname": "joko nyoba upload",
-                    "balance": "200",
-                    "picture": "1657201260025.webp",
-                    "phonenumber": "081233336633"
-                },
-                {
-                    "id": 42,
-                    "iduser": 26,
-                    "fullname": "regis3",
-                    "balance": "4900",
-                    "picture": null,
-                    "phonenumber": "081299998888"
-                },
-                {
-                    "id": 43,
-                    "iduser": 27,
-                    "fullname": "joni",
-                    "balance": "1000",
-                    "picture": null,
-                    "phonenumber": "081122223333"
-                },
-                {
-                    "id": 45,
-                    "iduser": 37,
-                    "fullname": "regis 5 updated",
-                    "balance": "1000",
-                    "picture": "1657598654821.webp",
-                    "phonenumber": "081122224444"
-                }
-            ]
-        })
-    },[])
-
-    console.log(data.results)
-    console.log(data)
-
+    const allprofile = useSelector(state => state.transactions.results);
+    const dispatch = useDispatch();
+    console.log(allprofile);
+    const totalData = useSelector(state => state.transactions.totalData);
+    const PassData = item => {
+      dispatch(getname(item.fullname));
+      dispatch(getimage(item.picture));
+      dispatch(getphone(item.phonenumber));
+      dispatch(getreceiver(item.iduser));
+      Navigate('/Transferinput');
+    };
+    React.useEffect(() => {
+      dispatch(getAllProfile());
+    }, [dispatch]);
   return (
     <div>
         <div>
@@ -100,7 +57,7 @@ function Transfer() {
                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                         </Form.Group>
                     </Form>
-                        {data.results&&data.results.map(o=>{
+                        {allprofile.results&&allprofile.results.map(o=>{
                             return(
                                 <Searchtrans pict={o.iduser} name={o.fullname} phonenumber={o.phonenumber}/>
                             )

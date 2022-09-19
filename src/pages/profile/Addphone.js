@@ -4,7 +4,7 @@ import { useNavigate} from 'react-router-dom'
 import { FiPhone} from 'react-icons/fi'
 import { useDispatch } from 'react-redux'
 
-import {phoneNumber} from '../../assets/redux/reducers/CustomValue'
+import {phoneNumber} from '../../assets/redux/reducers/transaction'
 
 
 // import user1 from '../../assets/images/profile-pict.png'
