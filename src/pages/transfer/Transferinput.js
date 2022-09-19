@@ -8,7 +8,7 @@ import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 import { useDispatch } from 'react-redux'
 
-import {customValue, amount} from '../../assets/redux/reducers/CustomValue'
+import {notes, amount, getamount} from '../../assets/redux/reducers/transaction'
 import { Formik } from 'formik';
 import * as Yup from 'yup'
 
@@ -31,7 +31,7 @@ const dispatch = useDispatch()
             
                 <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
                     <FiEdit2 />
-                    <Form.Control name="text"  type="text" placeholder='Add notes' onChange={(e)=>{dispatch(customValue(e.target.value))}} className=" no-border2"/>  {/** INI PENTING */}
+                    <Form.Control name="text"  type="text" placeholder='Add notes' onChange={(e)=>{dispatch(notes(e.target.value))}} className=" no-border2"/>  {/** INI PENTING */}
                     <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                 </Form.Group>
         </div>
@@ -52,7 +52,7 @@ function Transferinput() {
         window.alert('Login failed! Lol')
       }else{
         localStorage.setItem('amount', 'jumlah uang')
-        dispatch(amount(val.amount))
+        dispatch(getamount(val.amount))
         navigate("/transferconf");
 
       }
