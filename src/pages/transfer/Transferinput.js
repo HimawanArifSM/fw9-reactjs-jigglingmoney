@@ -7,18 +7,19 @@ import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 import { useDispatch } from 'react-redux'
-
-import {notes, amount, getamount} from '../../assets/redux/reducers/transaction'
+import { useSelector } from "react-redux";
+import {getamount, getdate, getimage, getname, getnotes, getphone, getreceiver} from '../../assets/redux/reducers/transaction'
 import { Formik } from 'formik';
 import * as Yup from 'yup'
 
 const loginschema = Yup.object().shape({
-  amount: Yup.number().min(10000).max(5000000).required('Required')
+  amount: Yup.number().min(10000).max(5000000).required('Required'),
+  notes: Yup.string().max(255).required('Required').optional()
 })
 
 function AuthForm({errors, handleSubmit, handleChange}){
     
-const dispatch = useDispatch()
+// const dispatch = useDispatch()
   return(
     <Form noValidate onSubmit={handleSubmit}>
         <div className="d-flex flex-column align-items-center" >
@@ -31,8 +32,8 @@ const dispatch = useDispatch()
             
                 <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
                     <FiEdit2 />
-                    <Form.Control name="text"  type="text" placeholder='Add notes' onChange={(e)=>{dispatch(notes(e.target.value))}} className=" no-border2"/>  {/** INI PENTING */}
-                    <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+                    <Form.Control name="notes" isInvalid={!!errors.notes} type="text" placeholder='Add notes' onChange={handleChange} className=" no-border2"/>  {/** INI PENTING */}
+                    <Form.Control.Feedback type="invalid">{errors.notes}</Form.Control.Feedback>
                 </Form.Group>
         </div>
         <div class=" d-flex justify-content-end">
@@ -43,20 +44,23 @@ const dispatch = useDispatch()
 }
 
 function Transferinput() {
-    const navigate = useNavigate();
-    
-    const dispatch = useDispatch()
-    const onLoginRequest = (val) => {
-        console.log(val.amount);
-      if(val.amount === 0){
-        window.alert('Login failed! Lol')
-      }else{
-        localStorage.setItem('amount', 'jumlah uang')
-        dispatch(getamount(val.amount))
-        navigate("/transferconf");
-
-      }
-    }
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const name = useSelector(state => state.transaction.name)
+  const image = useSelector(state => state.transaction.image)
+  const phone = useSelector(state => state.transaction.phone)
+  const receiver = useSelector(state => state.transaction.receiver)
+  const date = new Date().toISOString()
+  const onSubmit = (val) => {
+    dispatch(getamount(val.amount));
+    dispatch(getnotes(val.notes));
+    dispatch(getname(name));
+    dispatch(getimage(image));
+    dispatch(getphone(phone));
+    dispatch(getreceiver(receiver));
+    dispatch(getdate(date));
+    navigate('/Transferconf')
+  }
   return (
     <div>
         <div>
@@ -84,8 +88,8 @@ function Transferinput() {
                             press continue to the next steps.</p>
                     </div>
                     <Formik 
-                    onSubmit={onLoginRequest}
-                    initialValues={{amount: ''}} validationSchema={loginschema}>
+                    onSubmit={onSubmit}
+                    initialValues={{amount: '', notes: ''}} validationSchema={loginschema}>
                     {(props)=><AuthForm {...props}/>}
                     </Formik>
                 </div>

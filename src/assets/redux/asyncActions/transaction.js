@@ -2,7 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import http from '../../helpers/http';
 import qs from 'qs';
 
-export const getAllProfile = createAsyncThunk('profile/all', async () => {
+export const getAllProfile = createAsyncThunk('profile/get-all-profiles', async () => {
   const results = {};
   try {
     const {data} = await http().get('admin/profiles');

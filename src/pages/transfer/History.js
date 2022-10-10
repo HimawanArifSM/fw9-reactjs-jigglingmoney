@@ -12,7 +12,7 @@ function CompHistory(props){
 return(
     <div class="d-flex flex-row justify-content-between">
         <div class="d-flex flex-row justify-content-between gap-3">
-            <img className='pict-style3' src={'http://localhost:3333/publik/uploads/'+props.pict} alt="pict"/>
+            <img className='pict-style3' src={props.pict} alt="pict"/>
             <div>
                 <p>{props.name}</p>
                 <p>{props.type}</p>
@@ -31,7 +31,7 @@ return(
 function History() {
     //const [data, setData]=React.useState({})
     const dispatch = useDispatch();
-    const response = useSelector((state) => state.ressHistory?.results);
+    const response = useSelector(state => state.ressHistory?.results);
     console.log(response.results);
     const token = useSelector((state)=> state.auth.token)
     React.useEffect(()=>{
@@ -50,7 +50,7 @@ function History() {
                 <div>
                     <div class="d-flex flex-column gap-4 bg-white">
                         <p class="font-700">Transaction History</p>
-                        {response.results&&response.results?.map(o=>{
+                        {response&&response.map(o=>{
                             return(
                                 <CompHistory pict={o.picture} name={o.recipient} type={o.type} amount={o.amount}/>
                             )

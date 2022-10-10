@@ -1,6 +1,6 @@
 import React from 'react'
 import {Row, Col, Form} from 'react-bootstrap'
-import {Link, Navigate} from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
 import {FiSearch} from 'react-icons/fi'
 import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
@@ -10,32 +10,37 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getimage, getname, getphone, getreceiver } from '../../assets/redux/reducers/transaction'
 import {getAllProfile} from '../../assets/redux/asyncActions/transaction'
 
+import qs from 'qs';
+
 function Searchtrans(props){
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const PassData = () => {
+        // console.log(item);
+        dispatch(getname(props.fullname));
+        dispatch(getimage(props.picture));
+        dispatch(getphone(props.phonenumber));
+        dispatch(getreceiver(props.iduser));
+        navigate('/Transferinput');
+    };
     return(
-        <Link to={"/transferinput"} className="d-flex flex-column justify-content-between text-decoration-none f400-bck gap-3">
+        <btn onClick={PassData} className="d-flex flex-column justify-content-between text-decoration-none f400-bck gap-3">
             <div className="d-flex flex-row gap-3 justify-content-start bg-white ">
-                <img  src={tf1} alt="pict"/>
+                <img className='pict-style3' src={props.picture} alt="pict"/>
                 <div>
-                    <p>{props.name}</p>
+                    <p>{props.fullname}</p>
                     <p5>{props.phonenumber}</p5>
                 </div>
             </div>
-        </Link>
+        </btn>
     )
 } 
 
 function Transfer() {
-    const allprofile = useSelector(state => state.transactions.results);
+    const allprofile = useSelector(state => state.transaction?.getAllProfile);
     const dispatch = useDispatch();
-    console.log(allprofile);
-    const totalData = useSelector(state => state.transactions.totalData);
-    const PassData = item => {
-      dispatch(getname(item.fullname));
-      dispatch(getimage(item.picture));
-      dispatch(getphone(item.phonenumber));
-      dispatch(getreceiver(item.iduser));
-      Navigate('/Transferinput');
-    };
+    // console.log(allprofile);
+    // const totalData = useSelector(state => state.transactions?.totalData);
     React.useEffect(() => {
       dispatch(getAllProfile());
     }, [dispatch]);
@@ -57,9 +62,9 @@ function Transfer() {
                             <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
                         </Form.Group>
                     </Form>
-                        {allprofile.results&&allprofile.results.map(o=>{
+                        {allprofile&&allprofile.map(o=>{
                             return(
-                                <Searchtrans pict={o.iduser} name={o.fullname} phonenumber={o.phonenumber}/>
+                                <Searchtrans iduser={o.iduser} picture={o.picture} fullname={o.fullname} phonenumber={o.phonenumber}/>
                             )
                         })}
                 </div>

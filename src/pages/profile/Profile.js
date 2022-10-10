@@ -3,18 +3,12 @@ import { Row, Col} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 import { FiArrowRight,FiEdit2} from 'react-icons/fi'
 
-// import user1 from '../../assets/images/profile-pict.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 import { useDispatch, useSelector } from 'react-redux'
-// import { getProfile } from '../../assets/redux/asyncActions/profile'
 import { logout } from '../../assets/redux/reducers/auth'
 import { getProfile } from '../../assets/redux/asyncActions/profile';
-// import tf1 from '../../assets/images/dsb-prof-1.png'
-// import tf2 from '../../assets/images/logo.png'
-// import tf3 from '../../assets/images/7.png'
-// import tf4 from '../../assets/images/logo2.png'
 
 function Profile() {
     const dispatch = useDispatch();
@@ -24,20 +18,12 @@ function Profile() {
         dispatch(logout(()=>{
             navigate('/')}))
     }
-    //const dispatch = useDispatch();
-    //const response = useSelector((state) => state.coba?.results);
-    //const fullName= response?.results?.fullname
-    // const splitName = response?.results?.fullname.split(' ')
-    // const firstName = splitName[0];
-    // const lastName = fullName.slice(`${firstName.length}`)
-    // console.log(lastName);
-    const profile= useSelector((state)=> state.coba?.results)
+    const profile= useSelector(state=> state.profile?.results)
     console.log('profile: '+profile.phonenumber);
     
     React.useEffect(()=>{
         dispatch(getProfile(token))
-        //console.log(response?.results?.fullname);
-    }, []);
+    }, [dispatch, token]);
   return (
     <div>
         <div>
@@ -50,7 +36,7 @@ function Profile() {
             <Col className='col-md-10'>
                 <div>
                 <div className="bg-white text-center d-flex justify-content-center flex-column gap-2 pad-content" >
-                <div className="justify-content-center d-flex"><img  className='pict-style2' src={'http://localhost:3333/publik/uploads/'+profile.picture} alt="pict"/>
+                <div className="justify-content-center d-flex"><img  className='pict-style2' src={profile.picture} alt="pict"/>
                 </div>
                 <div className='d-flex gap-2 align-items-center justify-content-center'><FiEdit2 />Edit</div>
                 <h3>{profile.fullname}</h3>

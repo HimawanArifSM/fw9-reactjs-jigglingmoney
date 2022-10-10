@@ -10,12 +10,13 @@ import http from "../../helpers/http";
 // })
 
 export const getHistory = createAsyncThunk("history/getHistory", async (token) => {
-  const result = {};
+  const results = {};
   try {
     const { data } = await http(token).get("/authenticated/historyTransactions");
-    return data;
+    results.data = data.results;
+    return results;
   } catch (e) {
-    result.message = e.response.data?.message;
-    return result;
+    results.message = e.response.data?.message;
+    return results;
   }
 });
