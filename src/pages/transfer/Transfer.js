@@ -1,16 +1,13 @@
 import React from 'react'
 import {Row, Col, Form} from 'react-bootstrap'
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import {FiSearch} from 'react-icons/fi'
-import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 import {useDispatch, useSelector} from 'react-redux';
 import { getimage, getname, getphone, getreceiver } from '../../assets/redux/reducers/transaction'
 import {getAllProfile} from '../../assets/redux/asyncActions/transaction'
-
-import qs from 'qs';
 
 function Searchtrans(props){
     const navigate = useNavigate();
