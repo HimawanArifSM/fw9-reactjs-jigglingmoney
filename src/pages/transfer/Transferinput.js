@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Form, Button} from 'react-bootstrap'
+import { Row, Col, Form, Button, Alert} from 'react-bootstrap'
 import { useNavigate} from 'react-router-dom'
 import { FiEdit2} from 'react-icons/fi'
 import tf1 from '../../assets/images/photo-samuel-shusi.png'
@@ -18,7 +18,7 @@ const loginschema = Yup.object().shape({
 })
 
 function AuthForm({errors, handleSubmit, handleChange}){
-    
+  const response = useSelector(state => state.profile?.results);
 // const dispatch = useDispatch()
   return(
     <Form noValidate onSubmit={handleSubmit}>
@@ -28,7 +28,7 @@ function AuthForm({errors, handleSubmit, handleChange}){
                     <Form.Control.Feedback className='width-auto align-items-center text-align-center' type="invalid">{errors.amount}</Form.Control.Feedback>
                 </Form.Group>
             
-            <p>Rp120.000 Available</p>
+            <p>Rp{response.balance} Available</p>
             
                 <Form.Group className="mb-3 d-flex align-items-center wd200 input-group-text input-no-border">
                     <FiEdit2 />
@@ -46,20 +46,27 @@ function AuthForm({errors, handleSubmit, handleChange}){
 function Transferinput() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const response = useSelector(state => state.profile?.results);
   const name = useSelector(state => state.transaction.name)
   const image = useSelector(state => state.transaction.image)
   const phone = useSelector(state => state.transaction.phone)
+  const phonenumber = (phone.slice(1))
   const receiver = useSelector(state => state.transaction.receiver)
   const date = new Date().toISOString()
   const onSubmit = (val) => {
-    dispatch(getamount(val.amount));
-    dispatch(getnotes(val.notes));
-    dispatch(getname(name));
-    dispatch(getimage(image));
-    dispatch(getphone(phone));
-    dispatch(getreceiver(receiver));
-    dispatch(getdate(date));
-    navigate('/Transferconf')
+    if (parseInt(val.amount) <= parseInt(response.balance)){
+      dispatch(getamount(val.amount));
+      dispatch(getnotes(val.notes));
+      dispatch(getname(name));
+      dispatch(getimage(image));
+      dispatch(getphone(phone));
+      dispatch(getreceiver(receiver));
+      dispatch(getdate(date));
+      navigate('/Transferconf')
+    }
+    else {
+      alert('insuficent fund');
+    }
   }
   return (
     <div>
@@ -77,8 +84,8 @@ function Transferinput() {
                     <div class="d-flex flex-row justify-content-between gap-3">
                         <img src={tf1} alt="pict"/>
                         <div>
-                            <p>Samuel Suhi</p>
-                            <p5>+62 813-8492-9994</p5>
+                            <p>{name}</p>
+                            <p5>+62 {phonenumber}</p5>
                         </div>
                     </div>
                 </div>

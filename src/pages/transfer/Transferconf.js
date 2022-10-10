@@ -9,9 +9,18 @@ import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 
 function Transferconf() {
-    const value = useSelector((state)=>state.editValue.value)
-    const totalAmount = useSelector((state)=>state.editValue.amount)
-    console.log(value);
+    const response = useSelector(state => state.profile?.results);
+    const notes = useSelector((state)=>state.transaction.notes)
+    const amount = useSelector((state)=>state.transaction.amount)
+    const date = useSelector((state)=>state.transaction.date)
+    const dateOnly = date.slice(0, 10);
+    const hours = date.slice(11, 16);
+    const name = useSelector((state)=>state.transaction.name)
+    const image = useSelector((state)=>state.transaction.image)
+    const receiver = useSelector((state)=>state.transaction.receiver)
+    const phone = useSelector((state)=>state.transaction.phone)
+    const phonenumber = (phone.slice(1))
+    const balanceLeft = parseInt(response.balance) - parseInt(amount)
   return (
     <div>
         <div>
@@ -25,29 +34,29 @@ function Transferconf() {
                     <p className="font-700">Transfer To</p>
                     <div className="d-flex flex-row justify-content-between bg-white-shadow">
                         <div className="d-flex flex-row justify-content-between gap-3">
-                            <img src={tf1} alt="pict"/>
+                            <img className='pict-style3' src={image} alt="pict"/>
                             <div>
-                                <p>Samuel Suhi</p>
-                                <p5>+62 813-8492-9994</p5>
+                                <p>{name}</p>
+                                <p5>+62 {phonenumber}</p5>
                             </div>
                         </div>
                     </div>
                     <p>Details</p>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Amount</p>
-                        <h3>Rp{totalAmount}</h3>
+                        <h3>Rp{amount}</h3>
                     </div>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Balance Left</p>
-                        <h3>Rp20.000</h3>
+                        <h3>Rp{balanceLeft}</h3>
                     </div>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Date/Time</p>
-                        <h3>May 11, 2020 - 12.20</h3>
+                        <h3>{dateOnly} - {hours}</h3>
                     </div>
                     <div className="d-flex flex-column justify-content-between bg-white-shadow">
                         <p>Notes</p>
-                        <h3>{value}</h3>
+                        <h3>{notes}</h3>
                     </div>
                     <div className=" d-flex justify-content-end">
                         <Modals/>
