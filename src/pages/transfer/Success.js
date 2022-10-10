@@ -16,9 +16,12 @@ import { useSelector } from "react-redux";
 // import tf4 from '../../assets/images/photo-michael-le.png'
 
 function Success() {
-    
-    const value = useSelector((state)=>state.editValue.value)
-    const totalAmount = useSelector((state)=>state.editValue.amount)
+    const notes = useSelector((state)=>state.transaction.notes)
+    const amount = useSelector((state)=>state.transaction.amount)
+    const balanceleft = useSelector((state)=>state.transaction.balanceleft)
+    const time = useSelector((state)=>state.transaction.date)
+    const dateOnly = time.slice(0, 10);
+    const hours = time.slice(11, 16);
   return (
     <div>
         <div>
@@ -31,25 +34,25 @@ function Success() {
             <Col className='col-md-10'>
                 <div>
                 <div className=" d-flex flex-column gap-5 bg-white">
-                <div class="text-center d-flex flex-column gap-3 ">
+                <div className="text-center d-flex flex-column gap-3 ">
                     <FcOk className='mx-auto' size={69}/>
-                    <p class="font-700">Transfer Success</p>
+                    <p className="font-700">Transfer Success</p>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Amount</p>
-                    <h3>Rp{totalAmount}</h3>
+                    <h3>Rp{amount}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Balance Left</p>
-                    <h3>Rp20.000</h3>
+                    <h3>Rp{balanceleft}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Date/Time</p>
-                    <h3>May 11, 2020 - 12.20</h3>
+                    <h3>{dateOnly} - {hours}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Notes</p>
-                    <h3>{value}</h3>
+                    <h3>{notes}</h3>
                 </div>
                 
                 <div className="d-flex flex-row justify-content-between bg-white-shadow">
@@ -57,19 +60,19 @@ function Success() {
                         <img src={tf1} alt="pict"/>
                         <div>
                             <p>Samuel Suhi</p>
-                            <p5>+62 813-8492-9994</p5>
+                            <p>+62 813-8492-9994</p>
                         </div>
                         
                     </div>
                 </div>
                 <div className=" d-flex justify-content-end">
-                <div class=" d-flex justify-content-end gap-3">
-                    <button class="btn white-button wid-imp2"><FiShare2 /></button>
-                    <button class="btn white-button align-items-center d-flex gap-2">
+                <div className=" d-flex justify-content-end gap-3">
+                    <button className="btn white-button wid-imp2"><FiShare2 /></button>
+                    <button className="btn white-button align-items-center d-flex gap-2">
                     <FiDownload />
                     Download PDF
                     </button>
-                    <Link to={"/home"} class="btn blue-button wid-imp">Back to Home</Link>
+                    <Link to={"/home"} className="btn blue-button wid-imp">Back to Home</Link>
                 </div>
                 </div>
                 </div>

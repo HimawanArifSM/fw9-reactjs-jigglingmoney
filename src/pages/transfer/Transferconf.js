@@ -21,6 +21,7 @@ function Transferconf() {
     const phone = useSelector((state)=>state.transaction.phone)
     const phonenumber = (phone.slice(1))
     const balanceLeft = parseInt(response.balance) - parseInt(amount)
+    const bl = {balanceLeft: balanceLeft}
   return (
     <div>
         <div>
@@ -59,7 +60,9 @@ function Transferconf() {
                         <h3>{notes}</h3>
                     </div>
                     <div className=" d-flex justify-content-end">
-                        <Modals/>
+                        <Modals
+                        balanceLeft={bl}
+                        />
                     </div>
                 </div>
             </Col>

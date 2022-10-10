@@ -13,8 +13,12 @@ import Footer from '../../assets/component/Footer';
 // import tf4 from '../../assets/images/photo-michael-le.png'
 
 function Failed() {
-    const value = useSelector((state)=>state.editValue.value)
-    const totalAmount = useSelector((state)=>state.editValue.amount)
+    const notes = useSelector((state)=>state.transaction.notes)
+    const amount = useSelector((state)=>state.transaction.amount)
+    const balanceleft = useSelector((state)=>state.transaction.balanceleft)
+    const time = useSelector((state)=>state.transaction.date)
+    const dateOnly = time.slice(0, 10);
+    const hours = time.slice(11, 16);
   return (
     <div>
         <div>
@@ -27,26 +31,26 @@ function Failed() {
             <Col className='col-md-10'>
                 <div>
                 <div className="d-flex flex-column gap-5 bg-white">
-                <div class="text-center d-flex flex-column gap-3 ">
+                <div className="text-center d-flex flex-column gap-3 ">
                     <FcHighPriority className='mx-auto' size={69}/>
-                    <p class="font-700">Transfer Failed</p>
+                    <p className="font-700">Transfer Failed</p>
                     <p>We can't transfer your money at the moment, we recommend you to check your internet connection and try again.</p>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Amount</p>
-                    <h3>Rp{totalAmount}</h3>
+                    <h3>Rp{amount}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Balance Left</p>
-                    <h3>Rp20.000</h3>
+                    <h3>Rp{balanceleft}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Date/Time</p>
-                    <h3>May 11, 2020 - 12.20</h3>
+                    <h3>{dateOnly} - {hours}</h3>
                 </div>
                 <div className="d-flex flex-column justify-content-between bg-white-shadow">
                     <p>Notes</p>
-                    <h3>{value}</h3>
+                    <h3>{notes}</h3>
                 </div>
                 
                 <div className="d-flex flex-row justify-content-between bg-white-shadow">

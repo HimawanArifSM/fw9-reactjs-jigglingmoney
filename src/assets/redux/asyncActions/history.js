@@ -12,7 +12,7 @@ import http from "../../helpers/http";
 export const getHistory = createAsyncThunk("history/getHistory", async (token) => {
   const results = {};
   try {
-    const { data } = await http(token).get("/authenticated/historyTransactions");
+    const { data } = await http(token).get("/authenticated/historyTransactions?sorting=desc");
     results.data = data.results;
     return results;
   } catch (e) {

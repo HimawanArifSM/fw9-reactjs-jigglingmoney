@@ -82,7 +82,7 @@ function Transferinput() {
                 <p class="font-700">Transfer Money</p>
                 <div class="d-flex flex-row justify-content-between bg-white-shadow">
                     <div class="d-flex flex-row justify-content-between gap-3">
-                        <img src={tf1} alt="pict"/>
+                        <img className='pict-style3' src={image} alt="pict"/>
                         <div>
                             <p>{name}</p>
                             <p5>+62 {phonenumber}</p5>

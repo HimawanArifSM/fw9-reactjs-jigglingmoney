@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllProfile } from "../asyncActions/transaction";
+import { getAllProfile, transfer } from "../asyncActions/transaction";
 
 const initialState = {
   getAllProfile: [],
@@ -12,6 +12,8 @@ const initialState = {
   amount: '',
   notes: '',
   date: '',
+  balanceleft: '',
+  transactionData: [],
 };
 
 const transaction = createSlice({
@@ -39,6 +41,9 @@ const transaction = createSlice({
     getdate: (state, action) => {
       state.date = action.payload;
     },
+    getbalanceleft: (state, action) => {
+      state.balanceleft = action.payload;
+    },
     resetmsg: state => {
       state.errormsg = null;
       state.successmsg = null;
@@ -53,6 +58,14 @@ const transaction = createSlice({
         state.getAllProfile = action.payload.data;
         state.totalData = action.payload.page.totalData;
       });
+      build.addCase(transfer.pending, state => {
+        state.errormsg = null;
+        state.successmsg = null;
+      });
+      build.addCase(transfer.fulfilled, (state, action) => {
+        state.transactionData = action.payload.data;
+        state.successmsg = action.payload.message;
+      });
     }
   });
 
@@ -65,6 +78,7 @@ const transaction = createSlice({
     getnotes,
     getdate,
     resetmsg,
+    getbalanceleft,
   } = transaction.actions;
-  export {getAllProfile};
+  export {getAllProfile, transfer};
 export default transaction.reducer

@@ -6,6 +6,11 @@ import {Form} from 'react-bootstrap'
 
 import { Formik } from 'formik';
 import * as Yup from 'yup'
+import { useSelector, useDispatch } from "react-redux";
+import { transfer } from '../../assets/redux/asyncActions/transaction';
+import { getbalanceleft } from '../../assets/redux/reducers/transaction';
+import { parse } from 'qs';
+import QueryString from 'qs';
 
 const loginschema = Yup.object().shape({
   a: Yup.number().required('Required'),
@@ -62,14 +67,22 @@ function AuthForm({errors, handleSubmit, handleChange}){
 
 function MyVerticallyCenteredModal(props) {
   const navigate = useNavigate();
-  const onLoginRequest = (val) => {
-    if(val.a === '' || val.b === '' || val.c===''||val.d===''||val.e===''||val.f===''){
-      window.alert('Login failed! Lol')
-    }else if(val.a==='0'|| val.b === '0' || val.c==='0'||val.d==='0'||val.e==='0'||val.f==='0'){
-      navigate("/success");
-    }else{
-      navigate('/failed')
-    }
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
+  const notes = useSelector((state)=>state.transaction.notes)
+  const amount = useSelector((state)=>state.transaction.amount)
+  const time = useSelector((state)=>state.transaction.date)
+  const recipient_id = useSelector(state => state.transaction.receiver)
+  const successmsg = useSelector(state => state.transaction.successmsg)
+  const type_id = 18;
+  const balanceLefted = props.balanceLeft
+  // console.log(balanceLefted.balanceLeft);
+  const onSubmit = (val) => {
+    const pin = val.a + val.b + val.c + val.d + val.e + val.e;
+    const request = {amount, notes, recipient_id, time, type_id, pin};
+    dispatch(transfer({token, request}))
+    dispatch(getbalanceleft(balanceLefted.balanceLeft))
+    successmsg !== "" ? navigate('/Success') : navigate('/Failed')
   }
   return (
     <Modal
@@ -80,17 +93,17 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header className='no-border2' closeButton>
         <Modal.Title  id="contained-modal-title-vcenter">
-          Modal heading
+          Insert your pin
         </Modal.Title>
       </Modal.Header>
-      <Formik onSubmit={onLoginRequest} initialValues={{a: '', b: '', c: '', d: '', e: '', f: '', }} validationSchema={loginschema}>
+      <Formik onSubmit={onSubmit} initialValues={{a: '', b: '', c: '', d: '', e: '', f: '', }} validationSchema={loginschema}>
       {(props)=><AuthForm {...props}/>}
       </Formik>
     </Modal>
   );
 }
 
-function Modals() {
+function Modals({balanceLeft}) {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
@@ -102,6 +115,7 @@ function Modals() {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        balanceLeft={balanceLeft}
       />
     </>
   );

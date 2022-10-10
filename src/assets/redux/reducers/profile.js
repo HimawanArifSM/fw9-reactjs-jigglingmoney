@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getProfile } from "../asyncActions/profile";
 
 const initialState ={
-    results: {}
+    results: []
 }
 
 const profile = createSlice({
