@@ -1,13 +1,13 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import input from './transaction'
+import transaction from './transaction'
 import profile from "./profile";
 import auth from './auth'
 import history from "./history";
 
 const reducer = combineReducers({
-    editValue: input,
-    coba: profile,
+    transaction: transaction,
+    profile: profile,
     auth: auth,
     ressHistory:history
 })

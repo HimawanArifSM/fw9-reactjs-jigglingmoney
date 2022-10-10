@@ -18,7 +18,7 @@ function CompHistory(props){
 return(
     <div class="d-flex flex-row justify-content-between">
         <div class="d-flex flex-row justify-content-between gap-3">
-            <img className='pict-style3' src={'http://localhost:3333/publik/uploads/'+props.pict} alt="pict"/>
+            <img className='pict-style3' src={props.pict} alt="pict"/>
             <div>
                 <p>{props.name}</p>
                 <p>{props.type}</p>
@@ -33,24 +33,16 @@ return(
 
 
 function Home() {
-//   const dispatch = useDispatch();
-     const response = useSelector((state) => state.coba.results);
-
-//   React.useEffect(()=>{
-//       dispatch(getProfile())
-//       //console.log(response?.results?.fullname);
-//   }, []);
+const response = useSelector(state => state.profile?.results);
 const dispatch = useDispatch();
-//const navigate = useNavigate();
-const token = useSelector((state) => state.auth.token);
-//const profile = useSelector((state) => state.profile.data);
-const resHistory = useSelector((state) => state.ressHistory?.results);
+const token = useSelector(state => state.auth.token);
+const resHistory = useSelector(state => state.ressHistory?.results);
 const phone = response?.phonenumber?.slice(1)
 
-React.useEffect(() => {
-  dispatch(getProfile(token));
-  dispatch(getHistory(token))
-}, []);
+React.useEffect( () => {
+    dispatch(getHistory(token));
+    dispatch(getProfile(token));
+}, [dispatch, token]);
 
   return (
     <div>
@@ -100,12 +92,11 @@ React.useEffect(() => {
                                 <p5>Transaction History</p5>
                                 <Link className='f400-bck text-decoration-none' to={"/history"}>See all</Link>
                             </div>
-                            {resHistory.results&&resHistory.results?.map(o=>{
+                            {resHistory&&resHistory?.map(o=>{
                             return(
-                                <CompHistory pict={o.picture} name={o.recipient} type={o.type} amount={o.amount}/>
+                                <CompHistory pict={o.picture} name={o.recipient} type={o.a} amount={o.amount}/>
                             )
                             })}
-                            
                         </Col>
                     </Col>
                 </div>
