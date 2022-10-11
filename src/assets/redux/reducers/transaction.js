@@ -14,6 +14,8 @@ const initialState = {
   date: '',
   balanceleft: '',
   transactionData: [],
+  pageInfo:{},
+  msg: '',
 };
 
 const transaction = createSlice({
@@ -56,7 +58,8 @@ const transaction = createSlice({
       });
       build.addCase(getAllProfile.fulfilled, (state, action) => {
         state.getAllProfile = action.payload.data;
-        state.totalData = action.payload.page.totalData;
+        state.pageInfo = action.payload.page;
+        state.msg = action.payload.message;
       });
       build.addCase(transfer.pending, state => {
         state.errormsg = null;

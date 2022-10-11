@@ -2,10 +2,17 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import http from '../../helpers/http';
 import qs from 'qs';
 
-export const getAllProfile = createAsyncThunk('profile/get-all-profiles', async () => {
+export const getAllProfile = createAsyncThunk('profile/get-all-profiles', async ({lim, pages, seacrhed, sorted, sortedBy, seacrhedBy}) => {
   const results = {};
   try {
-    const {data} = await http().get('/admin/profiles');
+    const page = parseInt(pages) || 1;
+    const limit = parseInt(lim) || 5;
+    const search = seacrhed
+    const sorting = sorted
+    const sortBy = sortedBy
+    const seacrh_by = seacrhedBy
+    const qs = new URLSearchParams({limit, page, search, sorting, sortBy, seacrh_by}).toString()
+    const {data} = await http().get('/admin/profiles?'+qs);
     results.data = data.results;
     results.page = data?.pageInfo;
     results.message = data.message;
