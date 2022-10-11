@@ -16,10 +16,10 @@ import { getProfile } from '../../assets/redux/asyncActions/profile';
 function Managephone() {
     //const phoneNumber = useSelector((state)=>state.editValue.phoneNumber)
     const dispatch = useDispatch();
-    const response = useSelector((state) => state.coba?.results);
+    const response = useSelector((state) => state.profile?.results);
+    const token = useSelector((state) => state.auth.token);
     React.useEffect(()=>{
-        dispatch(getProfile())
-        //console.log(response?.results?.fullname);
+        dispatch(getProfile(token))
     }, []);
   return (
     <div>
@@ -38,7 +38,7 @@ function Managephone() {
                 <div class="d-flex justify-content-between bg-white-shadow align-items-center margin-btm-ex" >
                     <div>
                         <p>Primary</p>
-                        <h3>+62 {response?.results?.phonenumber.slice(1)}</h3>
+                        <h3>+62 {response?.phonenumber.slice(1)}</h3>
                     </div>
                     <div>
                         <Link to={"/addphone"} type="button" class="btn"><FiClipboard/></Link>

@@ -13,17 +13,16 @@ import { getProfile } from '../../assets/redux/asyncActions/profile';
 
 function Personalinfo() {
     const dispatch = useDispatch();
-    const response = useSelector((state) => state.coba?.results);
+    // const profile= useSelector(state=> state.profile?.results)
+    const response = useSelector((state) => state.profile.results);
     const fullName= response?.fullname
     const splitName = response?.fullname?.split(' ')
     const firstName = splitName[0];
     const lastName = fullName.slice(`${firstName.length}`)
     const phone = response?.phonenumber?.slice(1)
-    //console.log(lastName);
     const token = useSelector((state) => state.auth.token);
     React.useEffect(()=>{
         dispatch(getProfile(token))
-        //console.log(response?.fullname);
     }, []);
   return (
     <div>
