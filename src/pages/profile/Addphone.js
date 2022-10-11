@@ -2,9 +2,6 @@ import React from 'react'
 import { Row, Col, Form, Button} from 'react-bootstrap'
 import { useNavigate} from 'react-router-dom'
 import { FiPhone} from 'react-icons/fi'
-import { useDispatch } from 'react-redux'
-
-import {phoneNumber} from '../../assets/redux/reducers/transaction'
 
 
 // import user1 from '../../assets/images/profile-pict.png'
@@ -42,7 +39,7 @@ function AuthForm({errors, handleSubmit, handleChange}){
 
 function Addphone() {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const onLoginRequest = (val) => {
       if(val.phoneNumber===''){
         

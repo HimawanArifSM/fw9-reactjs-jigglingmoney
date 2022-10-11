@@ -1,8 +1,7 @@
 import React from 'react'
-import { Row, Col, Form, Button, Alert} from 'react-bootstrap'
+import { Row, Col, Form, Button} from 'react-bootstrap'
 import { useNavigate} from 'react-router-dom'
 import { FiEdit2} from 'react-icons/fi'
-import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';

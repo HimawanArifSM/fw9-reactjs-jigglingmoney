@@ -8,18 +8,12 @@ import { getProfile } from '../redux/asyncActions/profile'
 
 function Header() {
     const dispatch = useDispatch()
-    // const data = useSelector((state) => state.coba.results)
-    // console.log(data);
     const token = useSelector(state => state.auth.token);
-    // const phone = (data?.results?.phonenumber?.slice(1))
-
     const profile= useSelector(state=> state.profile?.results)
-    // console.log(profile.picture);
     const phone = (profile?.phonenumber?.slice(1))
 
     React.useEffect(()=>{
         dispatch(getProfile(token))
-        // console.log(data?.results?.fullname);
     }, [dispatch, token])
     
   return (

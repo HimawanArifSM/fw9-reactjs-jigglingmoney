@@ -1,7 +1,7 @@
 import React from 'react'
-import {Row, Col, Form, Button} from 'react-bootstrap'
+import {Row, Col, Button} from 'react-bootstrap'
 import { useNavigate} from 'react-router-dom'
-import {FiArrowDown, FiArrowUp, FiSearch} from 'react-icons/fi'
+import {FiArrowDown, FiArrowUp} from 'react-icons/fi'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
@@ -36,7 +36,7 @@ function Searchtrans(props){
 function Transfer() {
     const allprofile = useSelector(state => state.transaction?.getAllProfile);
     const pagesInfo = useSelector(state => state.transaction.pageInfo)
-    console.log(pagesInfo);
+    // console.log(pagesInfo);
     const msg = useSelector(state => state.transaction.msg)
     const dispatch = useDispatch();
     const [lim, setLim] = React.useState(5)
@@ -74,22 +74,22 @@ function Transfer() {
                         </Form.Group>
                     </Form> */}
                     <Row>
-                    <Col className='d-flex gap-3'>
-                    <input name="keyword" onChange={(e)=>{setSearched(e.target.value); setPages(1)}} placeholder="search" className='border-2 p-2 rounded-full placeholder:text-center text-center' />
-                    <select onChange={(e)=>setSearchedBy(e.target.value)}>
-                        <option value="fullname" >fullname</option>
-                        <option value="email" >email</option>
-                    </select>
-                </Col>
-                    <Col className='flex flex-row gap-10'>
-                    <Button onClick={()=>setSorted("ASC")}><FiArrowUp/></Button>
-                    <select onChange={(e)=>setSortedBy(e.target.value)}>
-                        <option value="id" selected>id</option>
-                        <option value="fullname" >fullname</option>
-                        <option value="email" >email</option>
-                    </select>
-                    <Button onClick={()=>setSorted("DESC")}><FiArrowDown/></Button>
-                </Col>
+                        <Col className='d-flex gap-3'>
+                        <input name="keyword" onChange={(e)=>{setSearched(e.target.value); setPages(1)}} placeholder="search" className='border-2 p-2 rounded-full placeholder:text-center text-center' />
+                        <select onChange={(e)=>setSearchedBy(e.target.value)}>
+                            <option value="fullname" >fullname</option>
+                            <option value="email" >email</option>
+                        </select>
+                        </Col>
+                        <Col className='flex flex-row gap-10'>
+                            <Button onClick={()=>setSorted("ASC")}><FiArrowUp/></Button>
+                            <select onChange={(e)=>setSortedBy(e.target.value)}>
+                                <option value="id" selected>id</option>
+                                <option value="fullname" >fullname</option>
+                                <option value="email" >email</option>
+                            </select>
+                            <Button onClick={()=>setSorted("DESC")}><FiArrowDown/></Button>
+                        </Col>
                     </Row>
                         {allprofile&&allprofile.map(o=>{
                             return(

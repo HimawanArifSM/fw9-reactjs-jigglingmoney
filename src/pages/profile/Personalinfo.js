@@ -23,7 +23,7 @@ function Personalinfo() {
     const token = useSelector((state) => state.auth.token);
     React.useEffect(()=>{
         dispatch(getProfile(token))
-    }, []);
+    }, [dispatch, token]);
   return (
     <div>
         <div>

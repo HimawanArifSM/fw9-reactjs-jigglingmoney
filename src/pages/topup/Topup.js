@@ -3,7 +3,7 @@ import { Row, Col, Button, Modal, Form} from 'react-bootstrap'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
-import {FiMail, FiPlus} from 'react-icons/fi'
+import {FiPlus} from 'react-icons/fi'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
