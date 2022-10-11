@@ -9,11 +9,20 @@ import http from "../../helpers/http";
 //     return data
 // })
 
-export const getHistory = createAsyncThunk("history/getHistory", async (token) => {
+export const getHistory = createAsyncThunk("history/getHistory", async ({token, lim, pages, seacrhed, sorted, sortedBy, seacrhedBy}) => {
   const results = {};
   try {
-    const { data } = await http(token).get("/authenticated/historyTransactions?sorting=desc");
+    const page = parseInt(pages) || 1;
+    const limit = parseInt(lim) || 5;
+    const search = seacrhed
+    const sorting = sorted
+    const sortBy = sortedBy
+    const seacrh_by = seacrhedBy
+    const qs = new URLSearchParams({limit, page, search, sorting, sortBy, seacrh_by}).toString()
+    const { data } = await http(token).get("/authenticated/historyTransactions?"+qs);
     results.data = data.results;
+    results.pageInfo = data.pageInfo;
+    results.msg = data.message;
     return results;
   } catch (e) {
     results.message = e.response.data?.message;
