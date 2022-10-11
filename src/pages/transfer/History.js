@@ -36,7 +36,7 @@ function History() {
     const token = useSelector((state)=> state.auth.token)
     React.useEffect(()=>{
         dispatch(getHistory(token))
-    }, []);
+    }, [dispatch, token]);
   return (
     <div>
         <div>

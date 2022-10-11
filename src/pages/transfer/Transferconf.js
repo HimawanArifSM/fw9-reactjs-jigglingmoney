@@ -2,8 +2,6 @@ import React from 'react'
 import { Row, Col} from 'react-bootstrap'
 import Modals from './Modals'
 import { useSelector } from "react-redux";
-
-import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
@@ -17,7 +15,7 @@ function Transferconf() {
     const hours = date.slice(11, 16);
     const name = useSelector((state)=>state.transaction.name)
     const image = useSelector((state)=>state.transaction.image)
-    const receiver = useSelector((state)=>state.transaction.receiver)
+    // const receiver = useSelector((state)=>state.transaction.receiver)
     const phone = useSelector((state)=>state.transaction.phone)
     const phonenumber = (phone.slice(1))
     const balanceLeft = parseInt(response.balance) - parseInt(amount)
