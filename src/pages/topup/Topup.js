@@ -48,8 +48,10 @@ function Topup() {
     }
     
     React.useEffect( () => {
-        dispatch(resetmsg())
-    }, [dispatch]);
+        if(successmsg){
+            dispatch(resetmsg())
+        }
+    }, [dispatch, successmsg]);
     
     return (
     <div>
