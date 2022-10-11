@@ -8,20 +8,20 @@ import { getHistory } from '../../assets/redux/asyncActions/history'
 import { FiArrowDown, FiArrowUp } from 'react-icons/fi';
 
 function CompHistory(props){
-    //const response = useSelector((state) => state.ressHistory?.results);
-    //console.log(response.results?.picture);
+    const response = useSelector(state => state.profile?.results);
+
 return(
     <div class="d-flex flex-row justify-content-between">
         <div class="d-flex flex-row justify-content-between gap-3">
             <img className='pict-style3' src={props.pict} alt="pict"/>
             <div>
-                <p>{props.name}</p>
+                {props.recipient_id === response.iduser ? (props.type === 'TopUp' ? (<p>{props.recipient}</p>): (<p>{props.sender}</p>)) :<p>{props.recipient}</p>}
                 <p>{props.type}</p>
             </div>
         </div>
-    <div>
-        <p>Rp{props.amount}</p>
-    </div>
+        <div>
+            {props.recipient_id === response.iduser ? <p className='textgreen'>+Rp{props.amount}</p> : <p className='textred'>-Rp{props.amount}</p>}
+        </div>
 </div>
 )
 }
@@ -72,7 +72,7 @@ function History() {
                         <p class="font-700">Transaction History</p>
                         {response&&response.map(o=>{
                             return(
-                                <CompHistory pict={o.picture} name={o.recipient} type={o.type} amount={o.amount}/>
+                                <CompHistory pict={o.picture} name={o.recipient} sender={o.sender} recipient={o.recipient} recipient_id={o.recipient_id} type={o.type} amount={o.amount}/>
                             )
                         })}
                     </div>

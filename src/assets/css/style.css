@@ -81,7 +81,12 @@
     justify-content:center;
     flex-direction: column;
 }
-
+.textgreen{
+    color: rgb(6, 166, 6);
+}
+.textred{
+    color: red;
+}
 .blue-button{
     background: #6379F4;
     border: 2px solid #FFFFFF;

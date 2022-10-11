@@ -5,20 +5,19 @@ import { FiDownload,FiShare2} from 'react-icons/fi'
 
 import {FcOk} from 'react-icons/fc'
 
-import tf1 from '../../assets/images/photo-samuel-shusi.png'
 import Header from '../../assets/component/Header';
 import Sidebar from '../../assets/component/Sidebar';
 import Footer from '../../assets/component/Footer';
 import { useSelector } from "react-redux";
 
-//import tf2 from '../../assets/images/failed.png'
-// import tf3 from '../../assets/images/photo-jessica-keen.png'
-// import tf4 from '../../assets/images/photo-michael-le.png'
-
 function Success() {
     const notes = useSelector((state)=>state.transaction.notes)
     const amount = useSelector((state)=>state.transaction.amount)
     const balanceleft = useSelector((state)=>state.transaction.balanceleft)
+    const name = useSelector((state)=>state.transaction.name)
+    const phone = useSelector((state)=>state.transaction.phone)
+    const phonenumber = (phone.slice(1))
+    const image = useSelector((state)=>state.transaction.image)
     const time = useSelector((state)=>state.transaction.date)
     const dateOnly = time.slice(0, 10);
     const hours = time.slice(11, 16);
@@ -57,10 +56,10 @@ function Success() {
                 
                 <div className="d-flex flex-row justify-content-between bg-white-shadow">
                     <div className="d-flex flex-row justify-content-between gap-3">
-                        <img src={tf1} alt="pict"/>
+                        <img className='pict-style3' src={image} alt="pict"/>
                         <div>
-                            <p>Samuel Suhi</p>
-                            <p>+62 813-8492-9994</p>
+                            <p>{name}</p>
+                            <p>+62 {phonenumber}</p>
                         </div>
                         
                     </div>

@@ -14,24 +14,23 @@ import { getHistory } from '../../assets/redux/asyncActions/history';
 import { resetmsg } from '../../assets/redux/reducers/transaction';
 
 function CompHistory(props){
-    //const response = useSelector((state) => state.ressHistory?.results);
+    const response = useSelector(state => state.profile?.results);
     //console.log(response.results?.picture);
 return(
     <div class="d-flex flex-row justify-content-between">
         <div class="d-flex flex-row justify-content-between gap-3">
             <img className='pict-style3' src={props.pict} alt="pict"/>
             <div>
-                <p>{props.name}</p>
+                {props.recipient_id === response.iduser ? (props.type === 'TopUp' ? (<p>{props.recipient}</p>): (<p>{props.sender}</p>)) :<p>{props.recipient}</p>}
                 <p>{props.type}</p>
             </div>
         </div>
         <div>
-            <p>Rp{props.amount}</p>
+            {props.recipient_id === response.iduser ? <p className='textgreen'>+Rp{props.amount}</p> : <p className='textred'>-Rp{props.amount}</p>}
         </div>
     </div>
 )
 }
-
 
 function Home() {
 const response = useSelector(state => state.profile?.results);
@@ -96,7 +95,7 @@ React.useEffect( () => {
                             </div>
                             {resHistory&&resHistory?.map(o=>{
                             return(
-                                <CompHistory pict={o.picture} name={o.recipient} type={o.type} amount={o.amount}/>
+                                <CompHistory pict={o.picture} name={o.recipient} sender={o.sender} recipient={o.recipient} recipient_id={o.recipient_id} type={o.type} amount={o.amount}/>
                             )
                             })}
                         </Col>
@@ -113,4 +112,3 @@ React.useEffect( () => {
 }
 
 export default Home
-
