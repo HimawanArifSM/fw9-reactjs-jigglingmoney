@@ -57,13 +57,6 @@ function History() {
             <Sidebar/>
             <Col className='col-md-10'>
                 <Row>
-                    <Col className='d-flex gap-3'>
-                    <input name="keyword" onChange={(e)=>{setSearched(e.target.value); setPages(1)}} placeholder="search" className='border-2 p-2 rounded-full placeholder:text-center text-center' />
-                    <select onChange={(e)=>setSearchedBy(e.target.value)}>
-                        <option value="fullname" >fullname</option>
-                        <option value="email" >email</option>
-                    </select>
-                    </Col>
                     <Col className='flex flex-row gap-10'>
                         <Button onClick={()=>setSorted("ASC")}><FiArrowUp/></Button>
                         <select onChange={(e)=>setSortedBy(e.target.value)}>

@@ -41,7 +41,7 @@ const resHistory = useSelector(state => state.ressHistory?.results);
 const phone = response?.phonenumber?.slice(1)
 
 React.useEffect( () => {
-    dispatch(getHistory(token));
+    dispatch(getHistory({token}));
     dispatch(getProfile(token));
     dispatch(resetmsg())
 }, [dispatch, token]);

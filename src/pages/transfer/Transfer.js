@@ -38,6 +38,7 @@ function Transfer() {
     const pagesInfo = useSelector(state => state.transaction.pageInfo)
     // console.log(pagesInfo);
     const msg = useSelector(state => state.transaction.msg)
+    console.log(msg);
     const dispatch = useDispatch();
     const [lim, setLim] = React.useState(5)
     const [pages, setPages] = React.useState(1)
@@ -96,6 +97,7 @@ function Transfer() {
                                 <Searchtrans iduser={o.iduser} picture={o.picture} fullname={o.fullname} phonenumber={o.phonenumber}/>
                             )
                         })}
+                        {msg === 'Request failed with status code 404' && <span>No data found</span>}
                 </div>
                 <Row>
                 <Col className='d-flex flex-row gap-3 align-items-center'>
