@@ -26,7 +26,7 @@ function Searchtrans(props){
                 <img className='pict-style3' src={props.picture} alt="pict"/>
                 <div>
                     <p>{props.fullname}</p>
-                    <p5>{props.phonenumber}</p5>
+                    <p>{props.phonenumber}</p>
                 </div>
             </div>
         </btn>

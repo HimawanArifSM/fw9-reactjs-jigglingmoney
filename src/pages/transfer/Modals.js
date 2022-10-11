@@ -8,9 +8,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup'
 import { useSelector, useDispatch } from "react-redux";
 import { transfer } from '../../assets/redux/asyncActions/transaction';
-import { getbalanceleft } from '../../assets/redux/reducers/transaction';
-import { parse } from 'qs';
-import QueryString from 'qs';
+import { getbalanceleft, resetmsg } from '../../assets/redux/reducers/transaction';
 
 const loginschema = Yup.object().shape({
   a: Yup.number().required('Required'),
@@ -82,6 +80,7 @@ function MyVerticallyCenteredModal(props) {
     const request = {amount, notes, recipient_id, time, type_id, pin};
     dispatch(transfer({token, request}))
     dispatch(getbalanceleft(balanceLefted.balanceLeft))
+    dispatch(resetmsg())
     successmsg !== "" ? navigate('/Success') : navigate('/Failed')
   }
   return (

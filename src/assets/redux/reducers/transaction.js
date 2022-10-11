@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllProfile, transfer } from "../asyncActions/transaction";
+import { getAllProfile, topUp, transfer } from "../asyncActions/transaction";
 
 const initialState = {
   getAllProfile: [],
@@ -65,6 +65,13 @@ const transaction = createSlice({
       build.addCase(transfer.fulfilled, (state, action) => {
         state.transactionData = action.payload.data;
         state.successmsg = action.payload.message;
+      });
+      build.addCase(topUp.pending, state => {
+        state.errormsg = null;
+        state.successmsg = null;
+      });
+      build.addCase(topUp.fulfilled, (state, action) => {
+        state.successmsg = action.payload?.message;
       });
     }
   });

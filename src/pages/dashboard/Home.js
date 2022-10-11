@@ -11,6 +11,7 @@ import Sidebar from '../../assets/component/Sidebar';
 import {useDispatch, useSelector} from 'react-redux';
 import { getProfile } from '../../assets/redux/asyncActions/profile';
 import { getHistory } from '../../assets/redux/asyncActions/history';
+import { resetmsg } from '../../assets/redux/reducers/transaction';
 
 function CompHistory(props){
     //const response = useSelector((state) => state.ressHistory?.results);
@@ -24,10 +25,10 @@ return(
                 <p>{props.type}</p>
             </div>
         </div>
-    <div>
-        <p>Rp{props.amount}</p>
+        <div>
+            <p>Rp{props.amount}</p>
+        </div>
     </div>
-</div>
 )
 }
 
@@ -42,6 +43,7 @@ const phone = response?.phonenumber?.slice(1)
 React.useEffect( () => {
     dispatch(getHistory(token));
     dispatch(getProfile(token));
+    dispatch(resetmsg())
 }, [dispatch, token]);
 
   return (
@@ -61,11 +63,11 @@ React.useEffect( () => {
                         <div class="d-flex flex-column gap-2 ">
                             <Link to={"/transfer"} className="btn blue-button align-items-center d-flex gap-1">
                                 <FiArrowUp />
-                                <p5>Transfer</p5>
+                                <p>Transfer</p>
                             </Link>
                             <Link to={"/topup"} className="btn blue-button align-items-center d-flex gap-1">
                                 <FiPlus />
-                                <p5>Top Up</p5>
+                                <p>Top Up</p>
                             </Link>
                         </div>
                     </div>
@@ -74,12 +76,12 @@ React.useEffect( () => {
                             <div className="d-flex justify-content-between">
                                     <div>
                                     <FiArrowDown/>
-                                    <p7>Income</p7>
+                                    <p>Income</p>
                                         <p>Rp2.120.000</p>
                                 </div>
                                 <div>
                                     <FiArrowUp/>
-                                    <p7>Expense</p7>
+                                    <p>Expense</p>
                                     <p>Rp1.560.000</p>
                                 </div>
                             </div>
@@ -89,12 +91,12 @@ React.useEffect( () => {
                         </Col>
                         <Col md={5} className='d-flex flex-column bg-white no-flex pad-sec-1 gap-3 '>
                             <div className="d-flex justify-content-between">
-                                <p5>Transaction History</p5>
+                                <p>Transaction History</p>
                                 <Link className='f400-bck text-decoration-none' to={"/history"}>See all</Link>
                             </div>
                             {resHistory&&resHistory?.map(o=>{
                             return(
-                                <CompHistory pict={o.picture} name={o.recipient} type={o.a} amount={o.amount}/>
+                                <CompHistory pict={o.picture} name={o.recipient} type={o.type} amount={o.amount}/>
                             )
                             })}
                         </Col>
